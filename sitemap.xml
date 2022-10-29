@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>https://tdjnodj.github.io/2022/10/28/GFW%E5%A5%87%E6%80%9D%E5%A6%99%E6%83%B3/</loc>
+    
+    <lastmod>2022-10-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://tdjnodj.github.io/2022/10/29/%E5%9B%9E%E5%BF%86Misaka-No-%E9%92%9F%E8%87%B4%E8%BF%9C/</loc>
+    
+    <lastmod>2022-10-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://tdjnodj.github.io/2022/10/28/hello-world/</loc>
+    
+    <lastmod>2022-10-28</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+
+  <url>
+    <loc>https://tdjnodj.github.io/</loc>
+    <lastmod>2022-10-29</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  
+
+  
+</urlset>
