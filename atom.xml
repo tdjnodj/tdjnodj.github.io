@@ -3,11 +3,11 @@
   <title>Hexo</title>
   
   
-  <link href="https://tdjnodj.github.io/atom.xml" rel="self"/>
+  <link href="https://blog.tangdaojing.ml/atom.xml" rel="self"/>
   
-  <link href="https://tdjnodj.github.io/"/>
-  <updated>2022-10-29T05:48:35.766Z</updated>
-  <id>https://tdjnodj.github.io/</id>
+  <link href="https://blog.tangdaojing.ml/"/>
+  <updated>2022-10-29T13:46:17.994Z</updated>
+  <id>https://blog.tangdaojing.ml/</id>
   
   <author>
     <name>John Doe</name>
@@ -17,9 +17,32 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>论翻墙界的黑历史</title>
+    <link href="https://blog.tangdaojing.ml/2022/10/29/%E8%AE%BA%E7%BF%BB%E5%A2%99%E7%95%8C%E7%9A%84%E9%BB%91%E5%8E%86%E5%8F%B2/"/>
+    <id>https://blog.tangdaojing.ml/2022/10/29/%E8%AE%BA%E7%BF%BB%E5%A2%99%E7%95%8C%E7%9A%84%E9%BB%91%E5%8E%86%E5%8F%B2/</id>
+    <published>2022-10-29T13:18:40.000Z</published>
+    <updated>2022-10-29T13:46:17.994Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>翻墙界看似是个自由软件遍地的良好生态，可实际上大部分开发者都一言难尽<br>本文来盘点一些翻墙界的黑历史。</p><h1 id="history-hysteria"><a href="#history-hysteria" class="headerlink" title="history hysteria!"></a><del>history</del> hysteria!</h1><h3 id="shadowsocksR"><a href="#shadowsocksR" class="headerlink" title="shadowsocksR"></a>shadowsocksR</h3><p>breakwa11魔改了shadowsocksR，但并没有遵守GPL。</p><p>网民们动用了墙外最有效的武器：开盒，开到退网。</p><p>科学界多了一个优良传统：一言不合就开盒。</p><h3 id="Ray之争"><a href="#Ray之争" class="headerlink" title="*Ray之争"></a>*Ray之争</h3><p>RPRX发明的xtls协议因沟通问题与v2ray分家，自立xray。同时RPRX的语气偏于自大，导致很多人不喜欢。</p><p>分就分，但支持哪一派的人都有不理智的粉丝，双方互喷，战火也蔓延到GUI客户端，最后导致Qv2ray停更，对其他GUI也有一定影响。</p><p>现在选择哪边成了政治站队，无关实际，跟饭圈一样。</p><p>争斗还没结束，<a href="https://www.v2fly.org/v5/config/proxy/vless.html">v2fly文档</a>中提出要废除vless并用trojan替代。现在绝大多数trojan都是暴露在前端的，如何面对服务端指纹问题？xtls许可证不同踢掉就算了，那RPRX做的vless也要政治式得否决掉，强。</p><h3 id="脚本作者也好不到哪里去"><a href="#脚本作者也好不到哪里去" class="headerlink" title="脚本作者也好不到哪里去"></a>脚本作者也好不到哪里去</h3><p>优良模范：teddysun、233boy和hijk</p><p>遵守开源许可，态度温和，脚本全能。</p><p>新时代作者：Misaka No &amp; 甬哥侃侃侃</p><p>抄袭代码、简单修改，为了自身利益撕逼、饭圈化。</p><h1 id="感叹"><a href="#感叹" class="headerlink" title="感叹"></a>感叹</h1><p>做的人为了利益乱搞滥改，用的人一脸茫然或被卷入争斗，牛的人不想开源自己使用，GFW坐收渔翁之利。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;翻墙界看似是个自由软件遍地的良好生态，可实际上大部分开发者都一言难尽&lt;br&gt;本文来盘点一些翻墙界的黑历史。&lt;/p&gt;
+&lt;h1 id=&quot;hist</summary>
+      
+    
+    
+    
+    
+    <category term="科学上网, 黑历史" scheme="https://blog.tangdaojing.ml/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91-%E9%BB%91%E5%8E%86%E5%8F%B2/"/>
+    
+  </entry>
+  
+  <entry>
     <title>回忆Misaka No(钟致远)</title>
-    <link href="https://tdjnodj.github.io/2022/10/29/%E5%9B%9E%E5%BF%86Misaka-No-%E9%92%9F%E8%87%B4%E8%BF%9C/"/>
-    <id>https://tdjnodj.github.io/2022/10/29/%E5%9B%9E%E5%BF%86Misaka-No-%E9%92%9F%E8%87%B4%E8%BF%9C/</id>
+    <link href="https://blog.tangdaojing.ml/2022/10/29/%E5%9B%9E%E5%BF%86Misaka-No-%E9%92%9F%E8%87%B4%E8%BF%9C/"/>
+    <id>https://blog.tangdaojing.ml/2022/10/29/%E5%9B%9E%E5%BF%86Misaka-No-%E9%92%9F%E8%87%B4%E8%BF%9C/</id>
     <published>2022-10-29T00:41:38.000Z</published>
     <updated>2022-10-29T05:48:35.766Z</updated>
     
@@ -39,8 +62,8 @@
   
   <entry>
     <title>GFW奇思妙想</title>
-    <link href="https://tdjnodj.github.io/2022/10/28/GFW%E5%A5%87%E6%80%9D%E5%A6%99%E6%83%B3/"/>
-    <id>https://tdjnodj.github.io/2022/10/28/GFW%E5%A5%87%E6%80%9D%E5%A6%99%E6%83%B3/</id>
+    <link href="https://blog.tangdaojing.ml/2022/10/28/GFW%E5%A5%87%E6%80%9D%E5%A6%99%E6%83%B3/"/>
+    <id>https://blog.tangdaojing.ml/2022/10/28/GFW%E5%A5%87%E6%80%9D%E5%A6%99%E6%83%B3/</id>
     <published>2022-10-28T13:54:37.000Z</published>
     <updated>2022-10-29T11:47:56.337Z</updated>
     
@@ -59,8 +82,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="https://tdjnodj.github.io/2022/10/28/hello-world/"/>
-    <id>https://tdjnodj.github.io/2022/10/28/hello-world/</id>
+    <link href="https://blog.tangdaojing.ml/2022/10/28/hello-world/"/>
+    <id>https://blog.tangdaojing.ml/2022/10/28/hello-world/</id>
     <published>2022-10-28T13:40:00.319Z</published>
     <updated>2022-10-28T13:40:00.319Z</updated>
     
