@@ -40,47 +40,6 @@
   </entry>
   
   <entry>
-    <title>回忆Misaka No(钟致远)</title>
-    <link href="https://blog.tangdaojing.ml/2022/10/29/%E5%9B%9E%E5%BF%86Misaka-No-%E9%92%9F%E8%87%B4%E8%BF%9C/"/>
-    <id>https://blog.tangdaojing.ml/2022/10/29/%E5%9B%9E%E5%BF%86Misaka-No-%E9%92%9F%E8%87%B4%E8%BF%9C/</id>
-    <published>2022-10-29T00:41:38.000Z</published>
-    <updated>2022-10-29T05:48:35.766Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近Misaka No 被开盒而退网，想起来还是挺唏嘘的。本文以“我”的视角回忆一下他，带有强烈的主观色彩，不喜勿看。</p><h1 id="记忆"><a href="#记忆" class="headerlink" title="记忆"></a>记忆</h1><h3 id="初识"><a href="#初识" class="headerlink" title="初识"></a>初识</h3><p>当时我还不会自己搭建扶墙节点，想学但苦于没有vps。在搜寻资源的时候发现了善于白嫖的他。并且按照他第一代博客( <a href="https://owo.misaka.rest/">https://owo.misaka.rest</a> ) 的教程，搞到了hax的vps。之后我用了他的x-ui、warp、xray脚本等工具，觉得他是个无所不能的大佬，立即拜倒。</p><h3 id="小有改变"><a href="#小有改变" class="headerlink" title="小有改变"></a>小有改变</h3><p>后来仔细看了他的github项目，发现这些东西都是改编自别人，我觉得有点失望，于是又找到各项目的原作，用回原作了。</p><h3 id="再度崇拜"><a href="#再度崇拜" class="headerlink" title="再度崇拜"></a>再度崇拜</h3><p>后来看他发了很多白嫖教程，我也跟着他白嫖了很多资源。白嫖的感觉非同一般的爽。又发现上游网络跳跃跑路了，觉得他尽到了开源使用者的义务——继续维护停更了的项目。xray支持shadowsocks-2022后，他也在x-ui里及时增加。</p><h3 id="又觉得不对劲"><a href="#又觉得不对劲" class="headerlink" title="又觉得不对劲"></a>又觉得不对劲</h3><p>后来发现这些白嫖的资源质量都很低，ip也因嫖的人过多而很脏。而且自己几百年都不一定用一次。我开始怀疑：嫖来这堆垃圾，自己没用，还占用了别人需要的资源，真的好吗？</p><p>又找到了<a href="https://github.com/FranzKafkaYu/x-ui">FranzKafkaYu维护的x-ui</a>，发现misaka版的x-ui引以为傲的功能包括ss-2022都是FranzKafkaYu完成的。这时misaka在我眼里成了一个fork别人项目、把配置改成自己喜欢的、再做成全家桶的360式流氓。</p><h3 id="惋惜"><a href="#惋惜" class="headerlink" title="惋惜"></a>惋惜</h3><p>过了一段时间，发现misaka关网站了，TG群也禁言。看里面提到“怕影响自身前途”，我还以为他是喝茶去了。不禁感到惋惜：虽然都是抄的，但给了小白很多指引。</p><h3 id="找到小号"><a href="#找到小号" class="headerlink" title="找到小号"></a>找到小号</h3><p>一段时间后，我发现了一个疑似他小号的账户（后来也证实确实是他）—— <a href="https://github.com/taffychan">taffychan</a>。我发现他新做了naiveproxy的脚本，虽然不太完善，但可以用。这总是他原创的了吧。看到他没死，还做了新作品，我觉得他会积极发展了。</p><h3 id="重出江湖"><a href="#重出江湖" class="headerlink" title="重出江湖"></a>重出江湖</h3><p>又过了一段时间，Misaka终于憋不住，重新开启了博客( <a href="https://blog.misaka.rest/">https://blog.misaka.rest</a> )。这时我觉得他有点恶心了:又不恢复之前所有的文章，就出几篇几个意思？炒冷饭吗？</p><p>再看他Gitlab上的x-ui:闭源了？赤裸裸地违反开源许可！原作可是高贵的<a href="https://github.com/vaxilu/x-ui/blob/main/LICENSE">GNU-3.0</a>许可证，你就因为代码被抄袭了就闭源？而且看到他每个脚本的界面上都大大地写着是他做的，原本网络跳跃的脚本里，原作竟然改成了他Misaka No？我立刻觉得他太不要脸了。</p><h3 id="装高冷"><a href="#装高冷" class="headerlink" title="装高冷"></a>装高冷</h3><p>他在修改他的naiveproxy脚本时，我拿过去完善了一下，但还是有点问题（他新改的连运行都不行），我去找他发问，他会都不回。有疑问在他群里问，他也不理我。几天后他完善了新的naive脚本，我就怀疑他抄了我修改的部分，当然也只是怀疑。但他既然成功完善了脚本，应该能回答我的问题，但他就是没回答，不像贴心的<a href="https://github.com/arm64v8a">@armeabi-v7a</a>尽力解答issue。这行为让我很气。</p><h3 id="被开盒"><a href="#被开盒" class="headerlink" title="被开盒"></a>被开盒</h3><p>最后由于和coia的矛盾，misaka终于被开了。刚看完了他的<a href="https://rip.wiki/">rip</a>，有点幸灾乐祸，觉得misaka罪有因得。甬哥<a href="https://ygkkk.blogspot.com/2022/10/blog-post.html">说的</a>也有理。misaka滥用得太过度了，自己没有ipv6还撸了一大把的hax和woiden。虽然甬哥抄别人代码，自己肯定也跟着misaka滥用，但他在自己的<a href="https://www.youtube.com/watch?v=6fbxOhRnXDc&t">视频</a>里演示hysteria脚本时，也告诫大家不要在woiden上用，有一定的底线。</p><h1 id="个人对Misaka-No的评价"><a href="#个人对Misaka-No的评价" class="headerlink" title="个人对Misaka No的评价"></a>个人对Misaka No的评价</h1><p>高度概括就是:小学生，心智不成熟。</p><p>对于我来讲，他给了我一定的技术启蒙，但也因高高在上的姿态伤害了我。</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;最近Misaka No 被开盒而退网，想起来还是挺唏嘘的。本文以“我”的视角回忆一下他，带有强烈的主观色彩，不喜勿看。&lt;/p&gt;
-&lt;h1 id</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>GFW奇思妙想</title>
-    <link href="https://blog.tangdaojing.ml/2022/10/28/GFW%E5%A5%87%E6%80%9D%E5%A6%99%E6%83%B3/"/>
-    <id>https://blog.tangdaojing.ml/2022/10/28/GFW%E5%A5%87%E6%80%9D%E5%A6%99%E6%83%B3/</id>
-    <published>2022-10-28T13:54:37.000Z</published>
-    <updated>2022-10-29T11:47:56.337Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="true-fake-dns"><a href="#true-fake-dns" class="headerlink" title="true fake dns"></a>true fake dns</h1><p>监听在53端口的udp协议，dns头部加上加密。也许不能骗过GFW，但是可能能穿越校园网&#x2F;公司内网甚至是免流？</p><h1 id="社工封锁"><a href="#社工封锁" class="headerlink" title="社工封锁"></a>社工封锁</h1><p>如果你使用了被确定用于扶墙用途的节点将会增加本带宽的可疑性，可疑性高的带宽连接的境外ip将增加被封锁的几率。<br>可疑性会随着时间推移而降低。<br>可疑性到达一定等级会进行境外连接限速&#x2F;随机阻断等干扰直至白名单，使用中转等手段会继续增加，直至国内白名单。</p><h1 id="CA攻击"><a href="#CA攻击" class="headerlink" title="CA攻击"></a>CA攻击</h1><p>GFW与本国CA机构合作，为GFW签发合法的证书以攻击TLS流量。</p><h1 id="随机对抗重放攻击"><a href="#随机对抗重放攻击" class="headerlink" title="随机对抗重放攻击"></a>随机对抗重放攻击</h1><p>搭建无tls服务器时对每个服务器生成一个随机概率：面对重放攻击，随机选择不回复、立刻断开连接、回落或发送特定数据包，将制造更多不同的特征。</p><h1 id="x加密"><a href="#x加密" class="headerlink" title="x加密"></a>x加密</h1><p>类似于xtls，只是在不使用tls的协议中，只加密请求头而暴露后面经tls加密后的内容。<br>对于hysteria这种CPU占用高的协议，或许可以采用？</p><h1 id="“不加密”"><a href="#“不加密”" class="headerlink" title="“不加密”"></a>“不加密”</h1><p>某些地区可以使用vless裸连，那我们何必追求加密？只要调整协议语法、信息排列顺序就能暂时使GFW无法识别该协议。<br>如果不想暴露自己访问的网站，可以配合tor。</p><h1 id="全能反代"><a href="#全能反代" class="headerlink" title="全能反代"></a>全能反代</h1><p>应配合“不加密”。<br>可以自建国内&#x2F;内网 dot&#x2F;doh 并将所有dns解析到自己的sni反代服务器，再设置ech。<br>个人认为能消除TLS指纹和TLS in TLS，且中间人看到的证书始终只有一个网站。之所以要配合“不加密”是因为国内的ech&#x2F;esni被阻断了。</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;true-fake-dns&quot;&gt;&lt;a href=&quot;#true-fake-dns&quot; class=&quot;headerlink&quot; title=&quot;true fake dns&quot;&gt;&lt;/a&gt;true fake dns&lt;/h1&gt;&lt;p&gt;监听在53端口的udp协议，dns头部加上加密。也许</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
     <title>Hello World</title>
     <link href="https://blog.tangdaojing.ml/2022/10/28/hello-world/"/>
     <id>https://blog.tangdaojing.ml/2022/10/28/hello-world/</id>
