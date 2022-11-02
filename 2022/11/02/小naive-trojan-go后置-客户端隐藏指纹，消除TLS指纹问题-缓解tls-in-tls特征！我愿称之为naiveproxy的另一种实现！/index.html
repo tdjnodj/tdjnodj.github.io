@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    
+    <link rel="apple-touch-icon" sizes="76x76" href="/null">
+    <link rel="icon" type="image/png" href="/null">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    <title>小naive:trojan-go后置 + 客户端隐藏指纹，消除TLS指纹问题 + 缓解tls in tls特征！我愿称之为naiveproxy的另一种实现！ - Hexo</title>
+    
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    
+    
+    <meta name="description" content="">
+    <meta name="author" content="John Doe">
+    <meta name="keywords" content="">
+    <meta property="og:title" content="小naive:trojan-go后置 + 客户端隐藏指纹，消除TLS指纹问题 + 缓解tls in tls特征！我愿称之为naiveproxy的另一种实现！"/>
+    <style>
+
+
+    
+    :root{
+        --shadow-color: rgba(0,0,0,0.2);
+        --sec-shadow: rgba(0,0,0,0.03);
+        --shadow-hover-color: rgba(0,0,0,0.28);
+        --first-text-color: #475b6d;
+        --second-text-color: #37475b;
+        --third-text-color: #858585;
+        --default-text-color: #505050;
+        --default-link-color: #007bff;
+        --link-color: #000000;
+        --second-link-color: #4F9BFA;
+        --code-color:rgba(27,31,35,.05);
+        --post-bkg-color: #fff;
+        --page-bkg-color: #f2f5f8;
+        --nav-a-hover-color: #3498db;
+        --post-sec-text-color: #718096;
+        --sec-bkg: #f2f5f8;
+        --color-mode: 'light';
+        --bkg-h: rgba(255,255,255,0.6);
+        --bkg-m: #e1e4e8;
+        --home-title-color: #4169E1;
+        --shadow: 0 4px 10px rgba(0,2,4,0.06),0 0 1px rgba(0,2,4,0.11);
+        --hr-color: #ddd;
+        --bg-t: #f4f4f4;
+        --nav-bkg: rgba(255,255,255,0.6);
+    }
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-mode: 'dark';
+  }
+
+  :root:not([data-theme]) {
+    --first-text-color: hsla(0,0%,100%,0.92);
+    --second-text-color: hsla(0,0%,100%,0.86);
+    --third-text-color: #a7a9ad;
+    --default-text-color: #505050;
+    --default-link-color: #1589e9;
+    --link-color: #000000;
+    --second-link-color: #30a9de;
+    --post-bkg-color: #252d38;
+    --page-bkg-color: #181c27;
+    --nav-a-hover-color: #3498db;
+    --post-sec-text-color: #a7a9ad;
+    --sec-bkg: #364151;
+    --bkg-h: rgba(255,255,255,0.2);
+    --bkg-m: rgba(255,255,255,0.1);
+    --home-title-color: rgb(226, 82, 90);
+    --code-color:#3e4b5e;
+    --shadow: none;
+    --hr-color: #718096;
+    --bg-t: #364151;
+    --nav-bkg: rgba(13,17,23,0.6);
+  }
+}
+
+[data-theme='dark'] {
+    --shadow-color: rgba(0,0,0,0.2);
+    --shadow-hover-color: rgba(0,0,0,0.28);
+    --first-text-color: hsla(0,0%,100%,0.92);
+    --second-text-color: hsla(0,0%,100%,0.86);
+    --third-text-color: #a7a9ad;
+    --default-text-color: #505050;
+    --default-link-color: #1589e9;
+    --link-color: #000000;
+    --second-link-color: #30a9de;
+    --post-bkg-color: #252d38;
+    --page-bkg-color: #181c27;
+    --nav-a-hover-color: #3498db;
+    --post-sec-text-color: #a7a9ad;
+    --sec-bkg: #364151;
+    --bkg-h: rgba(255,255,255,0.2);
+    --bkg-m: rgba(255,255,255,0.1);
+    --home-title-color: rgb(226, 82, 90);
+    --code-color:#3e4b5e;
+    --shadow: none;
+    --hr-color: #718096;
+    --bg-t: #364151;
+    --nav-bkg: rgba(13,17,23,0.6);
+}
+
+</style>
+
+
+
+<style>
+#page-main,footer,.p-btn{
+    display: none;
+}
+html,body{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow-y: overlay;
+}
+body{
+    background-color: var(--page-bkg-color);
+    color: var(--second-text-color);
+    overflow-y: scroll;
+}
+a {
+    color: var(--default-link-color);
+    text-decoration: none;
+    background-color: transparent;
+}
+a:hover{
+    color: var(--second-link-color);
+}
+.main-content,.post-card-main{
+    margin: 30px;
+}
+
+
+
+@media (max-width: 410px){
+    .post-card-main{
+        max-width: 350px!important;
+    }
+}
+
+@media (max-width: 980px){
+    .post-card-main{
+        max-width: 520px!important;
+    }
+}
+
+
+@media (min-width: 780px){ 
+    h3{
+        font-size: 1.5rem;
+        line-height: 1.5em;
+    }
+}
+@media (min-width: 1280px){ 
+    h3{
+        font-size: 1.7rem;
+        line-height: 1.5em;
+    }
+}
+@media (min-width: 2096px){ 
+    h3{
+        font-size: 1.8rem;
+        line-height: 1.5em;
+    }
+}
+
+.text-center{
+    text-align: center!important;
+}
+.middle-center{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    height: 100%;
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    height: 54px;
+    padding: 0 1.25rem;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    border-bottom: 1px solid var(--bkg-m);
+    background-color: var(--nav-bkg);
+}
+header .header__left, header .header__right {
+    display: flex;
+    align-items: center;
+    font-family: rubik,sans-serif,Varela Round;
+}
+header .header__left .logo__text {
+    font-size: 18px;
+    font-weight: 450;
+    padding: 14.5px 10px;
+    border-radius: 5px;
+    color: var(--second-text-color);
+}
+header .header__right .navbar__menus {
+    height: 54px;
+    padding: 0 0 0 15px;
+}
+header .header__right .button {
+    color: var(--second-text-color);
+}
+header .header__right .navbar__menus .navbar-menu {
+    display: inline-block;
+    align-items: center;
+    height: 54px;
+    padding: 0 10px;
+    font-size: 16px;
+    line-height: 54px;
+}
+header .header__right .dropdown-icon {
+    display: none;
+    height: 54px;
+    padding: 15px 10px;
+    border: 0;
+    background-color: transparent;
+}
+header .header__right .dropdown-menus {
+    line-height: 2rem;
+    animation: slide-in .15s ease 1;
+    display: none;
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    top: calc(54px + 10px);
+    border-radius: 6px;
+    padding: 24px;
+    background-color: var(--page-bkg-color);
+    border: 1px solid var(--bkg-m);
+    z-index: 9999;
+    justify-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+header .header__right #btn-search, header .header__right #btn-toggle-dark{
+    display: inline-block;
+    padding:  18px 10px;
+    height: 25px;
+}
+header .header__right #btn-dropdown{
+  display: inline-block;
+  padding:  13.5px 0;
+}
+header .header__right .dropdown-menus .dropdown-menu {
+    padding: 10px;
+    color: var(--second-text-color);
+}
+@media screen and (max-width: 764px){
+.navbar__menus {
+    display: none!important;
+}
+.dropdown-icon {
+    display: inline-block!important;
+}
+}
+.p-btn{
+    position: fixed;
+    bottom: 1.2rem;
+    right: 1.2rem;
+    contain: layout;
+}
+.toc-btn,.click-btn{
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    align-items: center;
+    margin-top: .5rem;
+    font-size: .75rem;
+    background-color: var(--sec-bkg);
+    display: block;
+    padding: 0.9rem;
+    box-shadow: 0 0.3rem 0.6rem rgba(48,55,66,.15);
+    border: none;
+    border-radius: 0.5rem;
+    line-height: 1;
+    color: var(--first-text-color);
+}
+.toc-link{
+    color: var(--second-text-color);
+}
+
+#css-loading h3{
+    font-weight: 500;
+    font-size: 1.4rem;
+    text-align: center;
+    position: fixed;
+    top: 200px;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    animation: cssLoad;
+    animation-delay: 0.3s;
+    -webkit-animation: cssLoad;
+    -webkit-animation-delay: 0.3s;
+}
+@keyframes cssLoad {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 0.9;
+    }
+}
+
+
+.memorial {
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    -o-filter: grayscale(100%);
+    filter: grayscale(100%);
+    filter:progid:DXImageTransform.Microsoft.BasicImage(grayscale=1); filter:gray;
+}
+
+
+    .post-copyright:after {
+        position: absolute;
+        color: #fff;
+        background: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 496 512'%3E%3Cpath fill='gray' d='M245.8 214.9l-33.2 17.3c-9.4-19.6-25.2-20-27.4-20-22.2 0-33.3 14.6-33.3 43.9 0 23.5 9.2 43.8 33.3 43.8 14.4 0 24.6-7 30.5-21.3l30.6 15.5a73.2 73.2 0 01-65.1 39c-22.6 0-74-10.3-74-77 0-58.7 43-77 72.6-77 30.8-.1 52.7 11.9 66 35.8zm143 0l-32.7 17.3c-9.5-19.8-25.7-20-27.9-20-22.1 0-33.2 14.6-33.2 43.9 0 23.5 9.2 43.8 33.2 43.8 14.5 0 24.7-7 30.5-21.3l31 15.5c-2 3.8-21.3 39-65 39-22.7 0-74-9.9-74-77 0-58.7 43-77 72.6-77C354 179 376 191 389 214.8zM247.7 8C104.7 8 0 123 0 256c0 138.4 113.6 248 247.6 248C377.5 504 496 403 496 256 496 118 389.4 8 247.6 8zm.8 450.8c-112.5 0-203.7-93-203.7-202.8 0-105.5 85.5-203.3 203.8-203.3A201.7 201.7 0 01451.3 256c0 121.7-99.7 202.9-202.9 202.9z'/%3E%3C/svg%3E");
+        content: ' ';
+        height: 10rem;
+        width: 10rem;
+        right: -2rem;
+        top: -2rem;
+        opacity: .1;
+    }
+
+</style>
+
+    
+
+    
+        <!--
+        <link rel="stylesheet" href="/css/page.css" media="print"
+            onload="this.media='all';this.onload=null">
+        <noscript>-->
+            <link rel="stylesheet" href="/css/page.css">
+        <!--</noscript>-->
+    
+    
+    <link rel="stylesheet" href="/css/main.css" media="print" onload="this.media='all';this.onload=null">
+    <noscript>
+        <link rel="stylesheet" href="/css/main.css">
+    </noscript>
+
+    
+    <script src="/js/main.js"></script>
+    
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+    <body>
+        <header>
+            
+<div class="header__left">
+	<a href="/" class="button"><span class="logo__text">TDJNODJ</span></a>
+</div>
+<div class="header__right">
+	<div class="navbar__menus">
+		
+	</div>
+	
+	<a href="/search/" class="button">
+		<div id="btn-search">
+			<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 1024 1024" width="24" height="24" fill="currentColor"
+				stroke="currentColor" stroke-width="32">
+				<path
+					d="M192 448c0-141.152 114.848-256 256-256s256 114.848 256 256-114.848 256-256 256-256-114.848-256-256z m710.624 409.376l-206.88-206.88A318.784 318.784 0 0 0 768 448c0-176.736-143.264-320-320-320S128 271.264 128 448s143.264 320 320 320a318.784 318.784 0 0 0 202.496-72.256l206.88 206.88 45.248-45.248z">
+				</path>
+			</svg>
+		</div>
+	</a>
+	
+	<a href="javaScript:void(0);" class="button" id="btn-toggle-dark">
+		<div>
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none"
+				stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+				<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+			</svg>
+		</div>
+	</a>
+	<a href="javaScript:void(0);" class="dropdown-icon button">
+		<div id="btn-dropdown">
+			<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 1024 1024" width="24" height="24" fill="currentColor"
+				stroke="currentColor" stroke-width="32" stroke-linecap="round">
+				<path
+					d="M903.43 561.52H148.8c-13.25 0-24-10.75-24-24s10.75-24 24-24h754.63c13.25 0 24 10.75 24 24s-10.75 24-24 24zM903.43 204.31H148.8c-13.25 0-24-10.75-24-24s10.75-24 24-24h754.63c13.25 0 24 10.75 24 24s-10.75 24-24 24zM903.43 918.73H148.8c-13.25 0-24-10.75-24-24s10.75-24 24-24h754.63c13.25 0 24 10.75 24 24s-10.75 24-24 24z"
+					fill="currentColor"></path>
+			</svg>
+		</div>
+	</a>
+	<div class="dropdown-menus" id="dropdown-menus">
+		
+	</div>
+</div>
+
+        </header>
+        <div id="top"></div>
+        <div id="page-main" class="main-content">
+        <div class="mg-top">
+            
+
+<article class="page">
+<div id="post-meta-m">
+    <div class="post-meta" id="post-meta">
+  <h3>小naive:trojan-go后置 + 客户端隐藏指纹，消除TLS指纹问题 + 缓解tls in tls特征！我愿称之为naiveproxy的另一种实现！</h3>
+    
+      <span class="post-meta-label">
+        John Doe
+      </span>
+    
+    
+      <span class="post-meta-label">
+        <span class="p-dot"></span>
+        <time datetime="2022-11-02 21:21" pubdate>
+          2022-11-02
+        </time>
+      </span>
+    
+    
+      
+      <span class="post-meta">
+        <span class="p-dot"></span>
+        共 878 字
+      </span>
+    
+    
+    
+  </div>
+  
+</div>
+<div class="article-m">
+  <div class="post-toc">
+    
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%90%AD%E5%BB%BA"><span class="toc-number">2.</span> <span class="toc-text">搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%86%E5%A4%87"><span class="toc-number">2.0.0.1.</span> <span class="toc-text">准备</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEnginx"><span class="toc-number">2.0.0.2.</span> <span class="toc-text">配置nginx</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEtrojan-go"><span class="toc-number">2.0.0.3.</span> <span class="toc-text">配置trojan-go</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5"><span class="toc-number">3.</span> <span class="toc-text">客户端连接</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8B%93%E5%B1%95"><span class="toc-number">4.</span> <span class="toc-text">拓展</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%93%E8%A7%A3tls-in-tls"><span class="toc-number">4.0.0.1.</span> <span class="toc-text">缓解tls in tls</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#FAQ"><span class="toc-number">5.</span> <span class="toc-text">FAQ</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%B8%A3%E8%B0%A2"><span class="toc-number">6.</span> <span class="toc-text">鸣谢</span></a></li></ol>
+    
+  </div>
+    <div id="article">
+      <div id="post-content" class="markdown-body textretty">
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>虽然naiveproxy能消除指纹问题，但真的太慢了。有没有既要当__又要__的方法呢？那就使用GFW report修改后的trojan-go来实现吧！</p>
+<h1 id="搭建"><a href="#搭建" class="headerlink" title="搭建"></a>搭建</h1><h4 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h4><p>一键安装必要环境</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">pt update -y</span><br><span class="line">apt upgrade</span><br><span class="line">apt install  wget curl</span><br><span class="line">apt install tmux -y #安装tmux以后台运行</span><br><span class="line">apt install nano #安装nano文本编辑器</span><br><span class="line">wget -N https://raw.githubusercontent.com/fscarmen/warp/main/menu.sh &amp;&amp; bash menu.sh [option] [lisence]  #安装warp</span><br></pre></td></tr></table></figure>
+
+<h4 id="配置nginx"><a href="#配置nginx" class="headerlink" title="配置nginx"></a>配置nginx</h4><p>&#x2F;etc&#x2F;nginx&#x2F;nginx.conf</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line">user www-date;</span><br><span class="line">worker_processes auto;</span><br><span class="line">pid /run/nginx.pid; #不要删了</span><br><span class="line">include /etc/nginx/modules-enabled<span class="comment">/*.conf;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">events &#123;</span></span><br><span class="line"><span class="comment">    worker_connections 1024;</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">http &#123;</span></span><br><span class="line"><span class="comment">    sendfile on;</span></span><br><span class="line"><span class="comment">    tcp_nopush on;</span></span><br><span class="line"><span class="comment">    tcp_nodelay on;</span></span><br><span class="line"><span class="comment">    keepalive_timeout 65;</span></span><br><span class="line"><span class="comment">    types_hash_max_size 2048;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    include /etc/nginx/mime.types;</span></span><br><span class="line"><span class="comment">    default_type application/octet-stream;</span></span><br><span class="line"><span class="comment">    gzip on;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    server &#123;</span></span><br><span class="line"><span class="comment">        listen 0.0.0.0:443 ssl;  #ipv6要把&quot;0.0.0.0&quot;改为&quot;[::]&quot;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">        server_name nicename.co;  #你的域名</span></span><br><span class="line"><span class="comment">        ssl_certificate       /path/cert.crt;  #证书位置</span></span><br><span class="line"><span class="comment">        ssl_certificate_key   /path/private.key; #私钥位置</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">        ssl_session_timeout 1d;</span></span><br><span class="line"><span class="comment">        ssl_session_cache shared:MozSSL:10m;</span></span><br><span class="line"><span class="comment">        ssl_session_tickets off;</span></span><br><span class="line"><span class="comment">        ssl_protocols    TLSv1.2 TLSv1.3; #旧版本可能不兼容新的加密方式，可以在前面加TLSv1.1</span></span><br><span class="line"><span class="comment">        ssl_prefer_server_ciphers off;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">        location / &#123;</span></span><br><span class="line"><span class="comment">            proxy_pass https://bing.com; #伪装网址，注意是否有www</span></span><br><span class="line"><span class="comment">            proxy_redirect off;</span></span><br><span class="line"><span class="comment">            proxy_ssl_server_name on;</span></span><br><span class="line"><span class="comment">            sub_filter_once off;</span></span><br><span class="line"><span class="comment">            sub_filter &quot;bing.com&quot; $server_name;</span></span><br><span class="line"><span class="comment">            proxy_set_header Host &quot;bing.com&quot;; #跟伪装网址一致</span></span><br><span class="line"><span class="comment">            proxy_set_header Referer $http_referer;</span></span><br><span class="line"><span class="comment">            proxy_set_header X-Real-IP $remote_addr;</span></span><br><span class="line"><span class="comment">            proxy_set_header User-Agent $http_user_agent;</span></span><br><span class="line"><span class="comment">            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span></span><br><span class="line"><span class="comment">            proxy_set_header X-Forwarded-Proto https;</span></span><br><span class="line"><span class="comment">            proxy_set_header Accept-Encoding &quot;&quot;;</span></span><br><span class="line"><span class="comment">            proxy_set_header Accept-Language &quot;zh-CN&quot;;</span></span><br><span class="line"><span class="comment">        &#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">        location /trojan&#123;   #trojan路径</span></span><br><span class="line"><span class="comment">            proxy_redirect off;</span></span><br><span class="line"><span class="comment">            proxy_pass http://127.0.0.1:10000; #trojan端口</span></span><br><span class="line"><span class="comment">            proxy_http_version 1.1;</span></span><br><span class="line"><span class="comment">            proxy_set_header Upgrade $http_upgrade;</span></span><br><span class="line"><span class="comment">            proxy_set_header Connection &quot;upgrade&quot;;</span></span><br><span class="line"><span class="comment">            proxy_set_header Host $host;</span></span><br><span class="line"><span class="comment">            proxy_set_header X-Real-IP $remote_addr;</span></span><br><span class="line"><span class="comment">            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span></span><br><span class="line"><span class="comment">        &#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    server &#123;</span></span><br><span class="line"><span class="comment">        listen 0.0.0.0:80; #同443端口</span></span><br><span class="line"><span class="comment">        location /.well-known/ &#123;</span></span><br><span class="line"><span class="comment">               root /var/www/html;</span></span><br><span class="line"><span class="comment">            &#125;</span></span><br><span class="line"><span class="comment">        location / &#123;</span></span><br><span class="line"><span class="comment">                rewrite ^(.*)$ https://$host$1 permanent;</span></span><br><span class="line"><span class="comment">            &#125;</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>接着重启nginx</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl reload nginx</span><br></pre></td></tr></table></figure>
+
+<h4 id="配置trojan-go"><a href="#配置trojan-go" class="headerlink" title="配置trojan-go"></a>配置trojan-go</h4><p><a target="_blank" rel="noopener" href="https://github.com/p4gefau1t/trojan-go">https://github.com/p4gefau1t/trojan-go</a><br>先创建一个文件夹，再下载trojan-go(自行替换为对应版本):</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir trojan-go/</span><br><span class="line">wget https://github.com/p4gefau1t/trojan-go/releases/download/v0.10.6/trojan-go-linux-amd64.zip</span><br><span class="line">unzip trojan-go-linux-amd64.zip</span><br><span class="line">rm trojan-go-linux-amd64.zip</span><br></pre></td></tr></table></figure>
+<p>创建一个配置文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nano config.json</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>填入:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;run_type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;server&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;local_addr&quot;</span><span class="punctuation">:</span> <span class="string">&quot;127.0.0.1&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;local_port&quot;</span><span class="punctuation">:</span> <span class="number">10000</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;remote_addr&quot;</span><span class="punctuation">:</span> <span class="string">&quot;127.0.0.1&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;remote_port&quot;</span><span class="punctuation">:</span> <span class="number">80</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;password&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="string">&quot;example&quot;</span></span><br><span class="line">    <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;mux&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;enabled&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;concurrency&quot;</span><span class="punctuation">:</span> <span class="number">8</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;idle_timeout&quot;</span><span class="punctuation">:</span> <span class="number">60</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;websocket&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;enabled&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;path&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/trojan&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;host&quot;</span><span class="punctuation">:</span> <span class="string">&quot;nicename.co&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;transport_plugin&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;enabled&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;plaintext&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>启动:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tmux</span><br><span class="line">./trojan-go</span><br></pre></td></tr></table></figure>
+
+<h1 id="客户端连接"><a href="#客户端连接" class="headerlink" title="客户端连接"></a>客户端连接</h1><p>请使用带有指纹混淆的GFW report版<br><a target="_blank" rel="noopener" href="https://github.com/gfw-report/trojan-go/releases">https://github.com/gfw-report/trojan-go/releases</a><br>配置文件:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;run_type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;client&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;local_addr&quot;</span><span class="punctuation">:</span> <span class="string">&quot;127.0.0.1&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;local_port&quot;</span><span class="punctuation">:</span> <span class="number">1080</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;remote_addr&quot;</span><span class="punctuation">:</span> <span class="string">&quot;nicename.co&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;remote_port&quot;</span><span class="punctuation">:</span> <span class="number">443</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;password&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="string">&quot;example&quot;</span></span><br><span class="line">    <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;ssl&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;sni&quot;</span><span class="punctuation">:</span> <span class="string">&quot;nicename.co&quot;</span><span class="punctuation">,</span></span><br><span class="line">		    <span class="attr">&quot;fingerprint&quot;</span><span class="punctuation">:</span> <span class="string">&quot;chrome&quot;</span> # 改为你想要伪装的指纹</span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">	  <span class="attr">&quot;mux&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;enabled&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;concurrency&quot;</span><span class="punctuation">:</span> <span class="number">8</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;idle_timeout&quot;</span><span class="punctuation">:</span> <span class="number">60</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;websocket&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;enabled&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;path&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/trojan&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;host&quot;</span><span class="punctuation">:</span> <span class="string">&quot;nicename.co&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>终端输入</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./trojan-go</span><br></pre></td></tr></table></figure>
+
+<p>即可运行</p>
+<h1 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h1><h4 id="缓解tls-in-tls"><a href="#缓解tls-in-tls" class="headerlink" title="缓解tls in tls"></a>缓解tls in tls</h4><p>将多路复用数尽可能设置大，如需无限复用，请在两端将<code>concurrency</code>设为<code>&#39;-1&#39;</code></p>
+<h1 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h1><p>1.为什么不在nginx里配合v2ray使用？</p>
+<p>答：v2ray没有指纹伪造，失去了本教程的目的。</p>
+<p>2.为什么过不了CDN</p>
+<p>答：目前据我观察推测是trojan-go的ws实现有问题，无法解决。</p>
+<p>3.为什么还是被墙了</p>
+<p>答：首先本组合没有消除TLS in TLS特征，其次可能是你的流量过大，或是用了被重点监控的ip</p>
+<h1 id="鸣谢"><a href="#鸣谢" class="headerlink" title="鸣谢"></a>鸣谢</h1><p><a target="_blank" rel="noopener" href="https://github.com/gfw-report/trojan-go" title="GFW report提供的trojan-go">GFW report提供的trojan-go</a><br><a target="_blank" rel="noopener" href="https://guide.v2fly.org/advanced/tls_routing_with_nginx.html#trojan-go" title="v2fly教程中的TLS分流">v2fly教程中的TLS分流</a></p>
+
+      </div>
+    </div>
+</div>
+
+<div class="post-category">
+
+    <div id="p-meta-i">
+        
+          
+              
+                <a class="hover-with-bg" href="/tags/GFW-nginx-trojan-naiveproxy/"># GFW,nginx,trojan,naiveproxy</a>
+              
+          
+    </div>
+</div>
+
+
+<div class="post-footer">
+  
+  <div class="donate text-center">
+    <span>喜欢这篇文章？为什么不考虑打赏一下作者呢？</span>
+    <div class="donate-way">
+      
+    </div>
+  </div>
+  
+
+  <div class="post-copyright">
+    <p style="margin: 5px 0;">文章作者：<a href="/">John Doe</a></p>
+    <p style="margin: 5px 0;">文章链接：<a href="https://blog.tangdaojing.ml/2022/11/02/%E5%B0%8Fnaive-trojan-go%E5%90%8E%E7%BD%AE-%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%9A%90%E8%97%8F%E6%8C%87%E7%BA%B9%EF%BC%8C%E6%B6%88%E9%99%A4TLS%E6%8C%87%E7%BA%B9%E9%97%AE%E9%A2%98-%E7%BC%93%E8%A7%A3tls-in-tls%E7%89%B9%E5%BE%81%EF%BC%81%E6%88%91%E6%84%BF%E7%A7%B0%E4%B9%8B%E4%B8%BAnaiveproxy%E7%9A%84%E5%8F%A6%E4%B8%80%E7%A7%8D%E5%AE%9E%E7%8E%B0%EF%BC%81/">https://blog.tangdaojing.ml/2022/11/02/%E5%B0%8Fnaive-trojan-go%E5%90%8E%E7%BD%AE-%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%9A%90%E8%97%8F%E6%8C%87%E7%BA%B9%EF%BC%8C%E6%B6%88%E9%99%A4TLS%E6%8C%87%E7%BA%B9%E9%97%AE%E9%A2%98-%E7%BC%93%E8%A7%A3tls-in-tls%E7%89%B9%E5%BE%81%EF%BC%81%E6%88%91%E6%84%BF%E7%A7%B0%E4%B9%8B%E4%B8%BAnaiveproxy%E7%9A%84%E5%8F%A6%E4%B8%80%E7%A7%8D%E5%AE%9E%E7%8E%B0%EF%BC%81/</a></p>
+    <p style="margin: 5px 0;">版权声明：本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处，谢谢。</p>
+  </div>
+  
+</div>
+
+    <!-- Comments -->
+    <div class="comments">
+        
+        
+    </div>
+
+</article>
+
+
+        </div>
+        
+<footer class="text-center">
+    
+    
+    
+    
+    
+    <p>&copy;  2020 - 2021&nbsp;&nbsp;TDJNODJ</p>
+    
+    <p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme by <a href="https://github.com/hifun-team/hexo-theme-miracle" target="_blank">Miracle</a></p>
+    
+    
+</footer>
+
+<div class="p-btn">
+    
+        <a class="toc-btn" id="toc-btn"><i id="i-menu"></i></a>
+    
+    <a href="#top" class="click-btn">
+      <i id="i-up"></i>
+    </a>
+</div>
+
+<!-- SCRIPTS -->
+
+
+
+
+
+
+
+<script>
+    document.getElementById("btn-dropdown").addEventListener('click', () => {
+      toggleClass("#dropdown-menus","display-inline");
+    });
+    console.log('\n' + ' %c Powered by Hexo Theme Miracle ' + ' %c https://github.com/hifun-team/hexo-theme-miracle ' + '\n' + '\n', 'color: #fff; background: #4F9BFA; padding:5px 0;', 'background: #FFF; padding:5px 0;');
+
+    
+
+    
+  /* 小彩蛋: 饮茶先啦 */
+  setTimeout(() => {
+    var time = new Date();
+    if (time.getHours() == 15) {
+      let comment = document.createComment(' 三点几嚟！饮茶先啦！ ');
+      document.body.insertBefore(comment, document.getElementsByTagName('header')[0]);
+    }
+  },1);
+    
+</script>
+
+
+<script>
+    var postImg = document.querySelectorAll("article[class=page] img");
+    for (let imgi = 0; imgi < postImg.length; imgi++) {
+        postImg[imgi].onclick = () => {
+            let zoomImg = document.createElement("div");
+            zoomImg.id = "zoomImg";
+            zoomImg.innerHTML = `<div id="zoom-picture"></div>
+    <div class="poptrox-overlay"
+        style="position: fixed; left: 0px; top: 0px; z-index: 20000; width: 100%; height: 100%; text-align: center; cursor: zoom-out; opacity: 1;">
+        <div style="display:inline-block;height:100%;vertical-align:middle;"></div>
+        <div
+            style="position:absolute;left:0;top:0;width:100%;height:100%;background:#000000;opacity:0;filter:alpha(opacity=0);">
+        </div>
+        <div class="poptrox-popup"
+            style="display: inline-block; vertical-align: middle; position: relative; z-index: 1; cursor: zoom-out; min-width: 10px; min-height: 10px; width: auto; height: auto;">
+            <div class="loader" style="display: none;"></div>
+            <div class="pic" style="text-indent: 0px;"><img
+                    src="${ postImg[imgi].srcset || postImg[imgi].src }" alt="Loading..."
+                    style="vertical-align: bottom; max-width: 85vw; max-height: 85vh;"></div>
+        </div>
+    </div>`;
+            document.body.appendChild(zoomImg);
+                document.querySelector("#zoomImg").onclick = () => {
+                    document.querySelector("#zoomImg").remove();
+                }
+        }
+    }
+    
+</script>
+
+
+
+
+    <script>
+        query("#toc-btn")[0].onclick = () => {
+            if (query(".post-toc")[0].innerHTML) {
+                toggleClass(".post-toc", "display-inline");
+            }
+        }
+
+        if (!query(".post-toc")[0].innerHTML) {
+            addClass("#toc-btn","display-none");
+        }
+    </script>
+
+
+
+
+
+
+
+
+
+        </div>
+        <div id="css-loading">
+            <h3 class="text-center">加载中...</h3>
+        </div>
+        
+    </body>
+</html>

@@ -8,7 +8,7 @@
     <link rel="apple-touch-icon" sizes="76x76" href="/null">
     <link rel="icon" type="image/png" href="/null">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-    <title>Tags - Hexo</title>
+    <title>GFW奇思妙想 - Hexo</title>
     
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     
@@ -16,7 +16,7 @@
     <meta name="description" content="">
     <meta name="author" content="John Doe">
     <meta name="keywords" content="">
-    <meta property="og:title" content="Tags"/>
+    <meta property="og:title" content="GFW奇思妙想"/>
     <style>
 
 
@@ -416,18 +416,96 @@ header .header__right .dropdown-menus .dropdown-menu {
         <div id="page-main" class="main-content">
         <div class="mg-top">
             
+
 <article class="page">
-<div id="post-meta-m" style="padding-bottom:0;">
-  <div class="post-meta" id="post-meta">
-    <h3>Tags</h3>
+<div id="post-meta-m">
+    <div class="post-meta" id="post-meta">
+  <h3>GFW奇思妙想</h3>
+    
+      <span class="post-meta-label">
+        John Doe
+      </span>
+    
+    
+      <span class="post-meta-label">
+        <span class="p-dot"></span>
+        <time datetime="2022-10-28 21:54" pubdate>
+          2022-10-28
+        </time>
+      </span>
+    
+    
+      
+      <span class="post-meta">
+        <span class="p-dot"></span>
+        共 471 字
+      </span>
+    
+    
+    
   </div>
+  
 </div>
-<div class="tag-page-main" style="padding-top:10px;">
-<div class="text-center tagcloud">
-  <a href="/tags/GFW-nginx-trojan-naiveproxy/" style="font-size: 15px; color: #acb3c2">GFW,nginx,trojan,naiveproxy</a> <a href="/tags/GFW-%E4%BC%AA%E8%A3%85/" style="font-size: 15px; color: #acb3c2">GFW,伪装</a> <a href="/tags/GFW-%E7%81%B5%E6%84%9F/" style="font-size: 15px; color: #acb3c2">GFW,灵感</a> <a href="/tags/misaka-%E5%9B%9E%E5%BF%86/" style="font-size: 15px; color: #acb3c2">misaka,回忆</a> <a href="/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91-%E9%BB%91%E5%8E%86%E5%8F%B2/" style="font-size: 15px; color: #acb3c2">科学上网, 黑历史</a>
+<div class="article-m">
+  <div class="post-toc">
+    
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#true-fake-dns"><span class="toc-number">1.</span> <span class="toc-text">true fake dns</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%A4%BE%E5%B7%A5%E5%B0%81%E9%94%81"><span class="toc-number">2.</span> <span class="toc-text">社工封锁</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CA%E6%94%BB%E5%87%BB"><span class="toc-number">3.</span> <span class="toc-text">CA攻击</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9A%8F%E6%9C%BA%E5%AF%B9%E6%8A%97%E9%87%8D%E6%94%BE%E6%94%BB%E5%87%BB"><span class="toc-number">4.</span> <span class="toc-text">随机对抗重放攻击</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#x%E5%8A%A0%E5%AF%86"><span class="toc-number">5.</span> <span class="toc-text">x加密</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E2%80%9C%E4%B8%8D%E5%8A%A0%E5%AF%86%E2%80%9D"><span class="toc-number">6.</span> <span class="toc-text">“不加密”</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%A8%E8%83%BD%E5%8F%8D%E4%BB%A3"><span class="toc-number">7.</span> <span class="toc-text">全能反代</span></a></li></ol>
+    
+  </div>
+    <div id="article">
+      <div id="post-content" class="markdown-body textretty">
+        <h1 id="true-fake-dns"><a href="#true-fake-dns" class="headerlink" title="true fake dns"></a>true fake dns</h1><p>监听在53端口的udp协议，dns头部加上加密。也许不能骗过GFW，但是可能能穿越校园网&#x2F;公司内网甚至是免流？</p>
+<h1 id="社工封锁"><a href="#社工封锁" class="headerlink" title="社工封锁"></a>社工封锁</h1><p>如果你使用了被确定用于扶墙用途的节点将会增加本带宽的可疑性，可疑性高的带宽连接的境外ip将增加被封锁的几率。<br>可疑性会随着时间推移而降低。<br>可疑性到达一定等级会进行境外连接限速&#x2F;随机阻断等干扰直至白名单，使用中转等手段会继续增加，直至国内白名单。</p>
+<h1 id="CA攻击"><a href="#CA攻击" class="headerlink" title="CA攻击"></a>CA攻击</h1><p>GFW与本国CA机构合作，为GFW签发合法的证书以攻击TLS流量。</p>
+<h1 id="随机对抗重放攻击"><a href="#随机对抗重放攻击" class="headerlink" title="随机对抗重放攻击"></a>随机对抗重放攻击</h1><p>搭建无tls服务器时对每个服务器生成一个随机概率：面对重放攻击，随机选择不回复、立刻断开连接、回落或发送特定数据包，将制造更多不同的特征。</p>
+<h1 id="x加密"><a href="#x加密" class="headerlink" title="x加密"></a>x加密</h1><p>类似于xtls，只是在不使用tls的协议中，只加密请求头而暴露后面经tls加密后的内容。<br>对于hysteria这种CPU占用高的协议，或许可以采用？</p>
+<h1 id="“不加密”"><a href="#“不加密”" class="headerlink" title="“不加密”"></a>“不加密”</h1><p>某些地区可以使用vless裸连，那我们何必追求加密？只要调整协议语法、信息排列顺序就能暂时使GFW无法识别该协议。<br>如果不想暴露自己访问的网站，可以配合tor。</p>
+<h1 id="全能反代"><a href="#全能反代" class="headerlink" title="全能反代"></a>全能反代</h1><p>应配合“不加密”。<br>可以自建国内&#x2F;内网 dot&#x2F;doh 并将所有dns解析到自己的sni反代服务器，再设置ech。<br>个人认为能消除TLS指纹和TLS in TLS，且中间人看到的证书始终只有一个网站。之所以要配合“不加密”是因为国内的ech&#x2F;esni被阻断了。</p>
+
+      </div>
+    </div>
 </div>
+
+<div class="post-category">
+
+    <div id="p-meta-i">
+        
+          
+              
+                <a class="hover-with-bg" href="/tags/GFW-%E7%81%B5%E6%84%9F/"># GFW,灵感</a>
+              
+          
+    </div>
 </div>
+
+
+<div class="post-footer">
+  
+  <div class="donate text-center">
+    <span>喜欢这篇文章？为什么不考虑打赏一下作者呢？</span>
+    <div class="donate-way">
+      
+    </div>
+  </div>
+  
+
+  <div class="post-copyright">
+    <p style="margin: 5px 0;">文章作者：<a href="/">John Doe</a></p>
+    <p style="margin: 5px 0;">文章链接：<a href="https://blog.tangdaojing.ml/2022/10/28/GFW%E5%A5%87%E6%80%9D%E5%A6%99%E6%83%B3/">https://blog.tangdaojing.ml/2022/10/28/GFW%E5%A5%87%E6%80%9D%E5%A6%99%E6%83%B3/</a></p>
+    <p style="margin: 5px 0;">版权声明：本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处，谢谢。</p>
+  </div>
+  
+</div>
+
+    <!-- Comments -->
+    <div class="comments">
+        
+        
+    </div>
+
 </article>
+
+
         </div>
         
 <footer class="text-center">
@@ -444,6 +522,8 @@ header .header__right .dropdown-menus .dropdown-menu {
 </footer>
 
 <div class="p-btn">
+    
+        <a class="toc-btn" id="toc-btn"><i id="i-menu"></i></a>
     
     <a href="#top" class="click-btn">
       <i id="i-up"></i>
@@ -479,8 +559,50 @@ header .header__right .dropdown-menus .dropdown-menu {
 </script>
 
 
+<script>
+    var postImg = document.querySelectorAll("article[class=page] img");
+    for (let imgi = 0; imgi < postImg.length; imgi++) {
+        postImg[imgi].onclick = () => {
+            let zoomImg = document.createElement("div");
+            zoomImg.id = "zoomImg";
+            zoomImg.innerHTML = `<div id="zoom-picture"></div>
+    <div class="poptrox-overlay"
+        style="position: fixed; left: 0px; top: 0px; z-index: 20000; width: 100%; height: 100%; text-align: center; cursor: zoom-out; opacity: 1;">
+        <div style="display:inline-block;height:100%;vertical-align:middle;"></div>
+        <div
+            style="position:absolute;left:0;top:0;width:100%;height:100%;background:#000000;opacity:0;filter:alpha(opacity=0);">
+        </div>
+        <div class="poptrox-popup"
+            style="display: inline-block; vertical-align: middle; position: relative; z-index: 1; cursor: zoom-out; min-width: 10px; min-height: 10px; width: auto; height: auto;">
+            <div class="loader" style="display: none;"></div>
+            <div class="pic" style="text-indent: 0px;"><img
+                    src="${ postImg[imgi].srcset || postImg[imgi].src }" alt="Loading..."
+                    style="vertical-align: bottom; max-width: 85vw; max-height: 85vh;"></div>
+        </div>
+    </div>`;
+            document.body.appendChild(zoomImg);
+                document.querySelector("#zoomImg").onclick = () => {
+                    document.querySelector("#zoomImg").remove();
+                }
+        }
+    }
+    
+</script>
 
 
+
+
+    <script>
+        query("#toc-btn")[0].onclick = () => {
+            if (query(".post-toc")[0].innerHTML) {
+                toggleClass(".post-toc", "display-inline");
+            }
+        }
+
+        if (!query(".post-toc")[0].innerHTML) {
+            addClass("#toc-btn","display-none");
+        }
+    </script>
 
 
 

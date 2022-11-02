@@ -8,7 +8,7 @@
     <link rel="apple-touch-icon" sizes="76x76" href="/null">
     <link rel="icon" type="image/png" href="/null">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-    <title>Tags - Hexo</title>
+    <title>节点提升伪装性思路 - Hexo</title>
     
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     
@@ -16,7 +16,7 @@
     <meta name="description" content="">
     <meta name="author" content="John Doe">
     <meta name="keywords" content="">
-    <meta property="og:title" content="Tags"/>
+    <meta property="og:title" content="节点提升伪装性思路"/>
     <style>
 
 
@@ -416,18 +416,97 @@ header .header__right .dropdown-menus .dropdown-menu {
         <div id="page-main" class="main-content">
         <div class="mg-top">
             
+
 <article class="page">
-<div id="post-meta-m" style="padding-bottom:0;">
-  <div class="post-meta" id="post-meta">
-    <h3>Tags</h3>
+<div id="post-meta-m">
+    <div class="post-meta" id="post-meta">
+  <h3>节点提升伪装性思路</h3>
+    
+      <span class="post-meta-label">
+        John Doe
+      </span>
+    
+    
+      <span class="post-meta-label">
+        <span class="p-dot"></span>
+        <time datetime="2022-11-02 21:35" pubdate>
+          2022-11-02
+        </time>
+      </span>
+    
+    
+      
+      <span class="post-meta">
+        <span class="p-dot"></span>
+        共 231 字
+      </span>
+    
+    
+    
   </div>
+  
 </div>
-<div class="tag-page-main" style="padding-top:10px;">
-<div class="text-center tagcloud">
-  <a href="/tags/GFW-nginx-trojan-naiveproxy/" style="font-size: 15px; color: #acb3c2">GFW,nginx,trojan,naiveproxy</a> <a href="/tags/GFW-%E4%BC%AA%E8%A3%85/" style="font-size: 15px; color: #acb3c2">GFW,伪装</a> <a href="/tags/GFW-%E7%81%B5%E6%84%9F/" style="font-size: 15px; color: #acb3c2">GFW,灵感</a> <a href="/tags/misaka-%E5%9B%9E%E5%BF%86/" style="font-size: 15px; color: #acb3c2">misaka,回忆</a> <a href="/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91-%E9%BB%91%E5%8E%86%E5%8F%B2/" style="font-size: 15px; color: #acb3c2">科学上网, 黑历史</a>
+<div class="article-m">
+  <div class="post-toc">
+    
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3DNS%E5%AB%8C%E7%96%91"><span class="toc-number">1.</span> <span class="toc-text">解决DNS嫌疑</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%8D%E4%BB%A3DOH"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">反代DOH</span></a></li></ol></li></ol></li></ol></li></ol>
+    
+  </div>
+    <div id="article">
+      <div id="post-content" class="markdown-body textretty">
+        <h1 id="解决DNS嫌疑"><a href="#解决DNS嫌疑" class="headerlink" title="解决DNS嫌疑"></a>解决DNS嫌疑</h1><p>某些时候，由于错误的配置，大量的DNS请求会通过代理发送。在GFW的视角看起来就很可疑了，所以如果是常用web服务器前置的话，可以通过以下措施减轻嫌疑：</p>
+<h4 id="反代DOH"><a href="#反代DOH" class="headerlink" title="反代DOH"></a>反代DOH</h4><p>以nginx为例:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">location /dns-query &#123;</span><br><span class="line">    proxy_pass https://cloudflare-dns.com;</span><br><span class="line">    proxy_redirect off;</span><br><span class="line">    proxy_ssl_server_name on;</span><br><span class="line">    sub_filter_once off;</span><br><span class="line">    sub_filter &quot;cloudflare-dns.com&quot; $server_name;</span><br><span class="line">    proxy_set_header Host &quot;cloudflare-dns.com&quot;;</span><br><span class="line">    proxy_set_header Referer $http_referer;</span><br><span class="line">    proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">    proxy_set_header User-Agent $http_user_agent;</span><br><span class="line">    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">    proxy_set_header X-Forwarded-Proto https;</span><br><span class="line">    proxy_set_header Accept-Encoding &quot;&quot;;</span><br><span class="line">    proxy_set_header Accept-Language &quot;zh-CN&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样在自己的服务器上建立了一个DOH服务。</p>
+<p>但是，谁知道你有个DOH服务？</p>
+<p>如果是自建网页的话，可以在网页里写上欢迎使用本站DOH之类的话，</p>
+<p>如果是反代网站，可以在朋友间小范围传播这个DOH。这样还能增加访问量，减少可疑性。</p>
+
+      </div>
+    </div>
 </div>
+
+<div class="post-category">
+
+    <div id="p-meta-i">
+        
+          
+              
+                <a class="hover-with-bg" href="/tags/GFW-%E4%BC%AA%E8%A3%85/"># GFW,伪装</a>
+              
+          
+    </div>
 </div>
+
+
+<div class="post-footer">
+  
+  <div class="donate text-center">
+    <span>喜欢这篇文章？为什么不考虑打赏一下作者呢？</span>
+    <div class="donate-way">
+      
+    </div>
+  </div>
+  
+
+  <div class="post-copyright">
+    <p style="margin: 5px 0;">文章作者：<a href="/">John Doe</a></p>
+    <p style="margin: 5px 0;">文章链接：<a href="https://blog.tangdaojing.ml/2022/11/02/%E8%8A%82%E7%82%B9%E6%8F%90%E5%8D%87%E4%BC%AA%E8%A3%85%E6%80%A7%E6%80%9D%E8%B7%AF/">https://blog.tangdaojing.ml/2022/11/02/%E8%8A%82%E7%82%B9%E6%8F%90%E5%8D%87%E4%BC%AA%E8%A3%85%E6%80%A7%E6%80%9D%E8%B7%AF/</a></p>
+    <p style="margin: 5px 0;">版权声明：本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处，谢谢。</p>
+  </div>
+  
+</div>
+
+    <!-- Comments -->
+    <div class="comments">
+        
+        
+    </div>
+
 </article>
+
+
         </div>
         
 <footer class="text-center">
@@ -444,6 +523,8 @@ header .header__right .dropdown-menus .dropdown-menu {
 </footer>
 
 <div class="p-btn">
+    
+        <a class="toc-btn" id="toc-btn"><i id="i-menu"></i></a>
     
     <a href="#top" class="click-btn">
       <i id="i-up"></i>
@@ -479,8 +560,50 @@ header .header__right .dropdown-menus .dropdown-menu {
 </script>
 
 
+<script>
+    var postImg = document.querySelectorAll("article[class=page] img");
+    for (let imgi = 0; imgi < postImg.length; imgi++) {
+        postImg[imgi].onclick = () => {
+            let zoomImg = document.createElement("div");
+            zoomImg.id = "zoomImg";
+            zoomImg.innerHTML = `<div id="zoom-picture"></div>
+    <div class="poptrox-overlay"
+        style="position: fixed; left: 0px; top: 0px; z-index: 20000; width: 100%; height: 100%; text-align: center; cursor: zoom-out; opacity: 1;">
+        <div style="display:inline-block;height:100%;vertical-align:middle;"></div>
+        <div
+            style="position:absolute;left:0;top:0;width:100%;height:100%;background:#000000;opacity:0;filter:alpha(opacity=0);">
+        </div>
+        <div class="poptrox-popup"
+            style="display: inline-block; vertical-align: middle; position: relative; z-index: 1; cursor: zoom-out; min-width: 10px; min-height: 10px; width: auto; height: auto;">
+            <div class="loader" style="display: none;"></div>
+            <div class="pic" style="text-indent: 0px;"><img
+                    src="${ postImg[imgi].srcset || postImg[imgi].src }" alt="Loading..."
+                    style="vertical-align: bottom; max-width: 85vw; max-height: 85vh;"></div>
+        </div>
+    </div>`;
+            document.body.appendChild(zoomImg);
+                document.querySelector("#zoomImg").onclick = () => {
+                    document.querySelector("#zoomImg").remove();
+                }
+        }
+    }
+    
+</script>
 
 
+
+
+    <script>
+        query("#toc-btn")[0].onclick = () => {
+            if (query(".post-toc")[0].innerHTML) {
+                toggleClass(".post-toc", "display-inline");
+            }
+        }
+
+        if (!query(".post-toc")[0].innerHTML) {
+            addClass("#toc-btn","display-none");
+        }
+    </script>
 
 
 

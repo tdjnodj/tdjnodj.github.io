@@ -428,6 +428,66 @@ header .header__right .dropdown-menus .dropdown-menu {
       
       <article class="index-card-info">
         <h3 class="index-header">
+          <a href="/2022/11/02/%E8%8A%82%E7%82%B9%E6%8F%90%E5%8D%87%E4%BC%AA%E8%A3%85%E6%80%A7%E6%80%9D%E8%B7%AF/">
+          
+          节点提升伪装性思路</a>
+        </h3>
+        <p class="index-excerpt">
+            
+            
+              
+            
+            解决DNS嫌疑某些时候，由于错误的配置，大量的DNS请求会通过代理发送。在GFW的视角看起来就很可疑了，所以如果是常用web服务器前置的话，可以通过以下措施减轻嫌疑：
+反代DOH以nginx为例:
+123456789101112131415location /dns-query &#123;    proxy_pass https://cloudflare-dns.com;    proxy_re
+        </p>
+        <div class="index-btm post-metas">
+          
+            
+              <time datetime="2022-11-02 21:35" pubdate>
+                2022-11-02
+              </time>
+            
+          
+          
+        </div>
+      </article>
+    </div>
+  
+    <div class="index-card">
+      
+      <article class="index-card-info">
+        <h3 class="index-header">
+          <a href="/2022/11/02/%E5%B0%8Fnaive-trojan-go%E5%90%8E%E7%BD%AE-%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%9A%90%E8%97%8F%E6%8C%87%E7%BA%B9%EF%BC%8C%E6%B6%88%E9%99%A4TLS%E6%8C%87%E7%BA%B9%E9%97%AE%E9%A2%98-%E7%BC%93%E8%A7%A3tls-in-tls%E7%89%B9%E5%BE%81%EF%BC%81%E6%88%91%E6%84%BF%E7%A7%B0%E4%B9%8B%E4%B8%BAnaiveproxy%E7%9A%84%E5%8F%A6%E4%B8%80%E7%A7%8D%E5%AE%9E%E7%8E%B0%EF%BC%81/">
+          
+          小naive:trojan-go后置 + 客户端隐藏指纹，消除TLS指纹问题 + 缓解tls in tls特征！我愿称之为naiveproxy的另一种实现！</a>
+        </h3>
+        <p class="index-excerpt">
+            
+            
+              
+            
+            前言虽然naiveproxy能消除指纹问题，但真的太慢了。有没有既要当__又要__的方法呢？那就使用GFW report修改后的trojan-go来实现吧！
+搭建准备一键安装必要环境
+123456pt update -yapt upgradeapt install  wget curlapt install tmux -y #安装tmux以后台运行apt install nano #安装nano文
+        </p>
+        <div class="index-btm post-metas">
+          
+            
+              <time datetime="2022-11-02 21:21" pubdate>
+                2022-11-02
+              </time>
+            
+          
+          
+        </div>
+      </article>
+    </div>
+  
+    <div class="index-card">
+      
+      <article class="index-card-info">
+        <h3 class="index-header">
           <a href="/2022/10/29/%E8%AE%BA%E7%BF%BB%E5%A2%99%E7%95%8C%E7%9A%84%E9%BB%91%E5%8E%86%E5%8F%B2/">
           
           论翻墙界的黑历史</a>
@@ -448,6 +508,64 @@ history hysteria!shadowsocksRbreakwa11魔改了shadowsocksR，但并没有遵守
             
               <time datetime="2022-10-29 21:18" pubdate>
                 2022-10-29
+              </time>
+            
+          
+          
+        </div>
+      </article>
+    </div>
+  
+    <div class="index-card">
+      
+      <article class="index-card-info">
+        <h3 class="index-header">
+          <a href="/2022/10/29/%E5%9B%9E%E5%BF%86Misaka-No-%E9%92%9F%E8%87%B4%E8%BF%9C/">
+          
+          回忆Misaka No(钟致远)</a>
+        </h3>
+        <p class="index-excerpt">
+            
+            
+              
+            
+            前言最近Misaka No 被开盒而退网，想起来还是挺唏嘘的。本文以“我”的视角回忆一下他，带有强烈的主观色彩，不喜勿看。
+记忆初识当时我还不会自己搭建扶墙节点，想学但苦于没有vps。在搜寻资源的时候发现了善于白嫖的他。并且按照他第一代博客( https://owo.misaka.rest ) 的教程，搞到了hax的vps。之后我用了他的x-ui、warp、xray脚本等工具，觉得他是个无所不能的
+        </p>
+        <div class="index-btm post-metas">
+          
+            
+              <time datetime="2022-10-29 08:41" pubdate>
+                2022-10-29
+              </time>
+            
+          
+          
+        </div>
+      </article>
+    </div>
+  
+    <div class="index-card">
+      
+      <article class="index-card-info">
+        <h3 class="index-header">
+          <a href="/2022/10/28/GFW%E5%A5%87%E6%80%9D%E5%A6%99%E6%83%B3/">
+          
+          GFW奇思妙想</a>
+        </h3>
+        <p class="index-excerpt">
+            
+            
+              
+            
+            true fake dns监听在53端口的udp协议，dns头部加上加密。也许不能骗过GFW，但是可能能穿越校园网&#x2F;公司内网甚至是免流？
+社工封锁如果你使用了被确定用于扶墙用途的节点将会增加本带宽的可疑性，可疑性高的带宽连接的境外ip将增加被封锁的几率。可疑性会随着时间推移而降低。可疑性到达一定等级会进行境外连接限速&#x2F;随机阻断等干扰直至白名单，使用中转等手段会继续增加，直至国内
+        </p>
+        <div class="index-btm post-metas">
+          
+            
+              <time datetime="2022-10-28 21:54" pubdate>
+                2022-10-28
               </time>
             
           
