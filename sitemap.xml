@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.tangdaojing.ml/2022/11/05/macOS%E6%90%AD%E5%BB%BA%E7%BD%91%E9%A1%B5%E7%89%88clashX/</loc>
+    
+    <lastmod>2022-11-05</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.tangdaojing.ml/2022/10/29/%E5%9B%9E%E5%BF%86Misaka-No-%E9%92%9F%E8%87%B4%E8%BF%9C/</loc>
     
     <lastmod>2022-11-02</lastmod>
@@ -58,7 +67,7 @@
 
   <url>
     <loc>https://blog.tangdaojing.ml/</loc>
-    <lastmod>2022-11-02</lastmod>
+    <lastmod>2022-11-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -66,35 +75,42 @@
   
   <url>
     <loc>https://blog.tangdaojing.ml/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91-%E9%BB%91%E5%8E%86%E5%8F%B2/</loc>
-    <lastmod>2022-11-02</lastmod>
+    <lastmod>2022-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://blog.tangdaojing.ml/tags/GFW-%E4%BC%AA%E8%A3%85/</loc>
-    <lastmod>2022-11-02</lastmod>
+    <lastmod>2022-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://blog.tangdaojing.ml/tags/GFW-%E7%81%B5%E6%84%9F/</loc>
-    <lastmod>2022-11-02</lastmod>
+    <lastmod>2022-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://blog.tangdaojing.ml/tags/GFW-nginx-trojan-naiveproxy/</loc>
-    <lastmod>2022-11-02</lastmod>
+    <lastmod>2022-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://blog.tangdaojing.ml/tags/misaka-%E5%9B%9E%E5%BF%86/</loc>
-    <lastmod>2022-11-02</lastmod>
+    <lastmod>2022-11-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.tangdaojing.ml/tags/macOS-clash-GFW/</loc>
+    <lastmod>2022-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
