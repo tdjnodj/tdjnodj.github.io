@@ -3,11 +3,11 @@
   <title>TDJNODJ&#39;s blog</title>
   
   
-  <link href="https://blog.tangdaojing.ml/blog/atom.xml" rel="self"/>
+  <link href="https://blog.tangdaojing.ml/atom.xml" rel="self"/>
   
-  <link href="https://blog.tangdaojing.ml/blog/"/>
+  <link href="https://blog.tangdaojing.ml/"/>
   <updated>2022-11-19T07:19:48.055Z</updated>
-  <id>https://blog.tangdaojing.ml/blog/</id>
+  <id>https://blog.tangdaojing.ml/</id>
   
   <author>
     <name>TDJ no dj</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>macOS搭建网页版clashX</title>
-    <link href="https://blog.tangdaojing.ml/blog/2022/11/05/web-clash/"/>
-    <id>https://blog.tangdaojing.ml/blog/2022/11/05/web-clash/</id>
+    <link href="https://blog.tangdaojing.ml/2022/11/05/web-clash/"/>
+    <id>https://blog.tangdaojing.ml/2022/11/05/web-clash/</id>
     <published>2022-11-05T02:37:23.000Z</published>
     <updated>2022-11-19T07:19:48.055Z</updated>
     
@@ -33,21 +33,21 @@
     
     
     
-    <category term="搭建" scheme="https://blog.tangdaojing.ml/blog/categories/%E6%90%AD%E5%BB%BA/"/>
+    <category term="搭建" scheme="https://blog.tangdaojing.ml/categories/%E6%90%AD%E5%BB%BA/"/>
     
     
-    <category term="GFW" scheme="https://blog.tangdaojing.ml/blog/tags/GFW/"/>
+    <category term="GFW" scheme="https://blog.tangdaojing.ml/tags/GFW/"/>
     
-    <category term="macOS" scheme="https://blog.tangdaojing.ml/blog/tags/macOS/"/>
+    <category term="macOS" scheme="https://blog.tangdaojing.ml/tags/macOS/"/>
     
-    <category term="clash" scheme="https://blog.tangdaojing.ml/blog/tags/clash/"/>
+    <category term="clash" scheme="https://blog.tangdaojing.ml/tags/clash/"/>
     
   </entry>
   
   <entry>
     <title>节点提升伪装性思路</title>
-    <link href="https://blog.tangdaojing.ml/blog/2022/11/02/node-like-a-parrot/"/>
-    <id>https://blog.tangdaojing.ml/blog/2022/11/02/node-like-a-parrot/</id>
+    <link href="https://blog.tangdaojing.ml/2022/11/02/node-like-a-parrot/"/>
+    <id>https://blog.tangdaojing.ml/2022/11/02/node-like-a-parrot/</id>
     <published>2022-11-02T13:35:49.000Z</published>
     <updated>2022-11-19T07:19:37.302Z</updated>
     
@@ -61,21 +61,21 @@
     
     
     
-    <category term="灵感记录" scheme="https://blog.tangdaojing.ml/blog/categories/%E7%81%B5%E6%84%9F%E8%AE%B0%E5%BD%95/"/>
+    <category term="灵感记录" scheme="https://blog.tangdaojing.ml/categories/%E7%81%B5%E6%84%9F%E8%AE%B0%E5%BD%95/"/>
     
     
-    <category term="GFW" scheme="https://blog.tangdaojing.ml/blog/tags/GFW/"/>
+    <category term="GFW" scheme="https://blog.tangdaojing.ml/tags/GFW/"/>
     
-    <category term="灵感" scheme="https://blog.tangdaojing.ml/blog/tags/%E7%81%B5%E6%84%9F/"/>
+    <category term="灵感" scheme="https://blog.tangdaojing.ml/tags/%E7%81%B5%E6%84%9F/"/>
     
-    <category term="伪装" scheme="https://blog.tangdaojing.ml/blog/tags/%E4%BC%AA%E8%A3%85/"/>
+    <category term="伪装" scheme="https://blog.tangdaojing.ml/tags/%E4%BC%AA%E8%A3%85/"/>
     
   </entry>
   
   <entry>
     <title>小naive:trojan-go后置 + 客户端隐藏指纹，消除TLS指纹问题 + 缓解tls in tls特征！我愿称之为naiveproxy的另一种实现！</title>
-    <link href="https://blog.tangdaojing.ml/blog/2022/11/02/trojango/"/>
-    <id>https://blog.tangdaojing.ml/blog/2022/11/02/trojango/</id>
+    <link href="https://blog.tangdaojing.ml/2022/11/02/trojango/"/>
+    <id>https://blog.tangdaojing.ml/2022/11/02/trojango/</id>
     <published>2022-11-02T13:21:31.000Z</published>
     <updated>2022-11-19T07:14:27.317Z</updated>
     
@@ -89,23 +89,23 @@
     
     
     
-    <category term="搭建" scheme="https://blog.tangdaojing.ml/blog/categories/%E6%90%AD%E5%BB%BA/"/>
+    <category term="搭建" scheme="https://blog.tangdaojing.ml/categories/%E6%90%AD%E5%BB%BA/"/>
     
     
-    <category term="GFW" scheme="https://blog.tangdaojing.ml/blog/tags/GFW/"/>
+    <category term="GFW" scheme="https://blog.tangdaojing.ml/tags/GFW/"/>
     
-    <category term="nginx" scheme="https://blog.tangdaojing.ml/blog/tags/nginx/"/>
+    <category term="nginx" scheme="https://blog.tangdaojing.ml/tags/nginx/"/>
     
-    <category term="trojan" scheme="https://blog.tangdaojing.ml/blog/tags/trojan/"/>
+    <category term="trojan" scheme="https://blog.tangdaojing.ml/tags/trojan/"/>
     
-    <category term="naiveproxy" scheme="https://blog.tangdaojing.ml/blog/tags/naiveproxy/"/>
+    <category term="naiveproxy" scheme="https://blog.tangdaojing.ml/tags/naiveproxy/"/>
     
   </entry>
   
   <entry>
     <title>论翻墙界的黑历史</title>
-    <link href="https://blog.tangdaojing.ml/blog/2022/10/29/fq-black-history/"/>
-    <id>https://blog.tangdaojing.ml/blog/2022/10/29/fq-black-history/</id>
+    <link href="https://blog.tangdaojing.ml/2022/10/29/fq-black-history/"/>
+    <id>https://blog.tangdaojing.ml/2022/10/29/fq-black-history/</id>
     <published>2022-10-29T13:18:40.000Z</published>
     <updated>2022-11-19T07:19:08.820Z</updated>
     
@@ -120,19 +120,19 @@
     
     
     
-    <category term="八卦吃瓜" scheme="https://blog.tangdaojing.ml/blog/categories/%E5%85%AB%E5%8D%A6%E5%90%83%E7%93%9C/"/>
+    <category term="八卦吃瓜" scheme="https://blog.tangdaojing.ml/categories/%E5%85%AB%E5%8D%A6%E5%90%83%E7%93%9C/"/>
     
     
-    <category term="科学上网" scheme="https://blog.tangdaojing.ml/blog/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"/>
+    <category term="科学上网" scheme="https://blog.tangdaojing.ml/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"/>
     
-    <category term="黑历史" scheme="https://blog.tangdaojing.ml/blog/tags/%E9%BB%91%E5%8E%86%E5%8F%B2/"/>
+    <category term="黑历史" scheme="https://blog.tangdaojing.ml/tags/%E9%BB%91%E5%8E%86%E5%8F%B2/"/>
     
   </entry>
   
   <entry>
     <title>回忆Misaka No(钟致远)</title>
-    <link href="https://blog.tangdaojing.ml/blog/2022/10/29/remeber-misakano/"/>
-    <id>https://blog.tangdaojing.ml/blog/2022/10/29/remeber-misakano/</id>
+    <link href="https://blog.tangdaojing.ml/2022/10/29/remeber-misakano/"/>
+    <id>https://blog.tangdaojing.ml/2022/10/29/remeber-misakano/</id>
     <published>2022-10-29T00:41:38.000Z</published>
     <updated>2022-11-19T07:20:17.558Z</updated>
     
@@ -147,19 +147,19 @@
     
     
     
-    <category term="八卦吃瓜" scheme="https://blog.tangdaojing.ml/blog/categories/%E5%85%AB%E5%8D%A6%E5%90%83%E7%93%9C/"/>
+    <category term="八卦吃瓜" scheme="https://blog.tangdaojing.ml/categories/%E5%85%AB%E5%8D%A6%E5%90%83%E7%93%9C/"/>
     
     
-    <category term="misaka" scheme="https://blog.tangdaojing.ml/blog/tags/misaka/"/>
+    <category term="misaka" scheme="https://blog.tangdaojing.ml/tags/misaka/"/>
     
-    <category term="回忆" scheme="https://blog.tangdaojing.ml/blog/tags/%E5%9B%9E%E5%BF%86/"/>
+    <category term="回忆" scheme="https://blog.tangdaojing.ml/tags/%E5%9B%9E%E5%BF%86/"/>
     
   </entry>
   
   <entry>
     <title>GFW奇思妙想</title>
-    <link href="https://blog.tangdaojing.ml/blog/2022/10/28/gfw-idea/"/>
-    <id>https://blog.tangdaojing.ml/blog/2022/10/28/gfw-idea/</id>
+    <link href="https://blog.tangdaojing.ml/2022/10/28/gfw-idea/"/>
+    <id>https://blog.tangdaojing.ml/2022/10/28/gfw-idea/</id>
     <published>2022-10-28T13:54:37.000Z</published>
     <updated>2022-11-19T07:20:03.414Z</updated>
     
@@ -173,19 +173,19 @@
     
     
     
-    <category term="灵感记录" scheme="https://blog.tangdaojing.ml/blog/categories/%E7%81%B5%E6%84%9F%E8%AE%B0%E5%BD%95/"/>
+    <category term="灵感记录" scheme="https://blog.tangdaojing.ml/categories/%E7%81%B5%E6%84%9F%E8%AE%B0%E5%BD%95/"/>
     
     
-    <category term="GFW" scheme="https://blog.tangdaojing.ml/blog/tags/GFW/"/>
+    <category term="GFW" scheme="https://blog.tangdaojing.ml/tags/GFW/"/>
     
-    <category term="灵感" scheme="https://blog.tangdaojing.ml/blog/tags/%E7%81%B5%E6%84%9F/"/>
+    <category term="灵感" scheme="https://blog.tangdaojing.ml/tags/%E7%81%B5%E6%84%9F/"/>
     
   </entry>
   
   <entry>
     <title>Hello World</title>
-    <link href="https://blog.tangdaojing.ml/blog/2022/10/28/hello-world/"/>
-    <id>https://blog.tangdaojing.ml/blog/2022/10/28/hello-world/</id>
+    <link href="https://blog.tangdaojing.ml/2022/10/28/hello-world/"/>
+    <id>https://blog.tangdaojing.ml/2022/10/28/hello-world/</id>
     <published>2022-10-28T13:40:00.319Z</published>
     <updated>2022-11-19T07:18:41.547Z</updated>
     
@@ -199,7 +199,7 @@
     
     
     
-    <category term="本站相关" scheme="https://blog.tangdaojing.ml/blog/categories/%E6%9C%AC%E7%AB%99%E7%9B%B8%E5%85%B3/"/>
+    <category term="本站相关" scheme="https://blog.tangdaojing.ml/categories/%E6%9C%AC%E7%AB%99%E7%9B%B8%E5%85%B3/"/>
     
     
   </entry>

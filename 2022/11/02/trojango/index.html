@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/blog/blog/img/fluid.png">
-  <link rel="icon" href="/blog/blog/img/fluid.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -21,7 +21,7 @@
     <meta name="description" content="前言虽然naiveproxy能消除指纹问题，但真的太慢了。有没有既要当__又要__的方法呢？那就使用GFW report修改后的trojan-go来实现吧！ 搭建准备一键安装必要环境 123456pt update -yapt upgradeapt install  wget curlapt install tmux -y #安装tmux以后台运行apt install nano #安装nano文">
 <meta property="og:type" content="article">
 <meta property="og:title" content="小naive:trojan-go后置 + 客户端隐藏指纹，消除TLS指纹问题 + 缓解tls in tls特征！我愿称之为naiveproxy的另一种实现！">
-<meta property="og:url" content="https://blog.tangdaojing.ml/blog/2022/11/02/trojango/index.html">
+<meta property="og:url" content="https://blog.tangdaojing.ml/2022/11/02/trojango/index.html">
 <meta property="og:site_name" content="TDJNODJ&#39;s blog">
 <meta property="og:description" content="前言虽然naiveproxy能消除指纹问题，但真的太慢了。有没有既要当__又要__的方法呢？那就使用GFW report修改后的trojan-go来实现吧！ 搭建准备一键安装必要环境 123456pt update -yapt upgradeapt install  wget curlapt install tmux -y #安装tmux以后台运行apt install nano #安装nano文">
 <meta property="og:locale" content="zh_CN">
@@ -60,12 +60,12 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
-<link  rel="stylesheet" href="/blog/css/main.css" />
+<link  rel="stylesheet" href="/css/main.css" />
 
 
-  <link id="highlight-css" rel="stylesheet" href="/blog/css/highlight.css" />
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/blog/css/highlight-dark.css" />
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
   
 
 
@@ -74,20 +74,20 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"blog.tangdaojing.ml","root":"/blog/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/blog/local-search.xml"};
+    var CONFIG = {"hostname":"blog.tangdaojing.ml","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
       Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
     }
   </script>
-  <script  src="/blog/js/utils.js" ></script>
-  <script  src="/blog/js/color-schema.js" ></script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
   
 
 
   
-<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/blog/atom.xml" title="TDJNODJ's blog" type="application/atom+xml">
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="TDJNODJ's blog" type="application/atom+xml">
 </head>
 
 
@@ -100,7 +100,7 @@
 <div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/blog/">
+    <a class="navbar-brand" href="/">
       <strong>TDJNODJ</strong>
     </a>
 
@@ -119,7 +119,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/blog/">
+              <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
                 首页
               </a>
@@ -131,7 +131,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/blog/archives/">
+              <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 归档
               </a>
@@ -143,7 +143,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/blog/categories/">
+              <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 分类
               </a>
@@ -155,7 +155,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/blog/tags/">
+              <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 标签
               </a>
@@ -167,7 +167,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/blog/about/">
+              <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
                 关于
               </a>
@@ -331,7 +331,7 @@
     
       <span class="category-chain">
         
-  <a href="/blog/categories/%E6%90%AD%E5%BB%BA/" class="category-chain-item">搭建</a>
+  <a href="/categories/%E6%90%AD%E5%BB%BA/" class="category-chain-item">搭建</a>
   
   
 
@@ -346,13 +346,13 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/blog/tags/GFW/">#GFW</a>
+        <a href="/tags/GFW/">#GFW</a>
       
-        <a href="/blog/tags/nginx/">#nginx</a>
+        <a href="/tags/nginx/">#nginx</a>
       
-        <a href="/blog/tags/trojan/">#trojan</a>
+        <a href="/tags/trojan/">#trojan</a>
       
-        <a href="/blog/tags/naiveproxy/">#naiveproxy</a>
+        <a href="/tags/naiveproxy/">#naiveproxy</a>
       
     </div>
   
@@ -365,7 +365,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>小naive:trojan-go后置 + 客户端隐藏指纹，消除TLS指纹问题 + 缓解tls in tls特征！我愿称之为naiveproxy的另一种实现！</div>
-      <div>https://blog.tangdaojing.ml/blog/2022/11/02/trojango/</div>
+      <div>https://blog.tangdaojing.ml/2022/11/02/trojango/</div>
     </div>
     <div class="license-meta">
       
@@ -409,7 +409,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/blog/2022/11/02/node-like-a-parrot/" title="节点提升伪装性思路">
+                      <a href="/2022/11/02/node-like-a-parrot/" title="节点提升伪装性思路">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">节点提升伪装性思路</span>
                         <span class="visible-mobile">上一篇</span>
@@ -419,7 +419,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/blog/2022/10/29/fq-black-history/" title="论翻墙界的黑历史">
+                      <a href="/2022/10/29/fq-black-history/" title="论翻墙界的黑历史">
                         <span class="hidden-mobile">论翻墙界的黑历史</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -559,8 +559,8 @@
 
 <script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
 <script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/blog/js/events.js" ></script>
-<script  src="/blog/js/plugins.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 
   <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
@@ -582,7 +582,7 @@
 
 
   
-    <script  src="/blog/js/img-lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
@@ -681,7 +681,7 @@
 
   <script>Fluid.plugins.imageCaption();</script>
 
-  <script  src="/blog/js/local-search.js" ></script>
+  <script  src="/js/local-search.js" ></script>
 
 
 
@@ -689,7 +689,7 @@
 
 <!-- 主题的启动项，将它保持在最底部 -->
 <!-- the boot of the theme, keep it at the bottom -->
-<script  src="/blog/js/boot.js" ></script>
+<script  src="/js/boot.js" ></script>
 
 
   
