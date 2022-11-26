@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.tangdaojing.ml/2022/11/26/nekosao/</loc>
+    
+    <lastmod>2022-11-26</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.tangdaojing.ml/2022/11/26/web-clash/</loc>
     
     <lastmod>2022-11-26</lastmod>
@@ -147,6 +156,20 @@
   </url>
   
   <url>
+    <loc>https://blog.tangdaojing.ml/tags/nekoray/</loc>
+    <lastmod>2022-11-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.tangdaojing.ml/tags/%E6%8A%98%E8%85%BE/</loc>
+    <lastmod>2022-11-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.tangdaojing.ml/tags/%E4%BC%AA%E8%A3%85/</loc>
     <lastmod>2022-11-26</lastmod>
     <changefreq>weekly</changefreq>
@@ -227,6 +250,13 @@
   
   <url>
     <loc>https://blog.tangdaojing.ml/categories/%E6%8A%98%E8%85%BE/</loc>
+    <lastmod>2022-11-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.tangdaojing.ml/categories/%E6%8A%98%E8%85%BE/%E5%AE%A2%E6%88%B7%E7%AB%AF/</loc>
     <lastmod>2022-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

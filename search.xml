@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>神级科学上网客户端nekoray的骚操作</title>
+      <link href="/2022/11/26/nekosao/"/>
+      <url>/2022/11/26/nekosao/</url>
+      
+        <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>一直苦于mac没有好用的科学上网GUI客户端，但终于等到它了！nekoray( <a href="https://github.com/MatsuriDayo/nekoray/">https://github.com/MatsuriDayo/nekoray/</a> )支持多平台，功能强大。</p><p>基础功能没什么好讲的，今天咱们来搞些骚操作。</p><h1 id="骚操作"><a href="#骚操作" class="headerlink" title="骚操作"></a>骚操作</h1><h2 id="套clash"><a href="#套clash" class="headerlink" title="套clash"></a>套clash</h2><p>一直以来，*ray类客户端都不能自动切换节点。这导致很多时候看视频看着看着节点挂了得手动切换，刷新一下网页还要重新看广告，很不方便。而clash不仅分流多样，还能自动切换节点，那为什么不把两者的优点结合到一起呢？</p><h3 id="搭建clash网页GUI"><a href="#搭建clash网页GUI" class="headerlink" title="搭建clash网页GUI"></a>搭建clash网页GUI</h3><p>网页GUI能让你自己选择节点。</p><h3 id="设置nekoray"><a href="#设置nekoray" class="headerlink" title="设置nekoray"></a>设置nekoray</h3><p>在自定义核心中添加clash内核。然后添加自定义内核配置。将你的clash配置文件扔进去。在nekoray GUI的地址、端口随便写。值得注意的是，要将配置中的<code>socks-port</code>或<code>mixed-port</code>改为<code>socks_port</code>。</p><p>然后就能用了。</p><h2 id="使用自定义核心"><a href="#使用自定义核心" class="headerlink" title="使用自定义核心"></a>使用自定义核心</h2><p>nekoray最大的亮点就是人性化的自定义核心配置。可以自定义配置文件后缀、帮忙分流，功能很强大。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 折腾 </category>
+          
+          <category> 客户端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> GFW </tag>
+            
+            <tag> nekoray </tag>
+            
+            <tag> 折腾 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>网页版clash搭建</title>
       <link href="/2022/11/26/web-clash/"/>
       <url>/2022/11/26/web-clash/</url>
