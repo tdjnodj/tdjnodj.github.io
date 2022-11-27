@@ -1,3 +1,4 @@
+https://blog.tangdaojing.ml/2022/11/27/trojanws/
 https://blog.tangdaojing.ml/2022/11/26/nekosao/
 https://blog.tangdaojing.ml/2022/11/26/web-clash/
 https://blog.tangdaojing.ml/2022/11/02/trojango/
@@ -24,6 +25,7 @@ https://blog.tangdaojing.ml/tags/%E5%9B%9E%E5%BF%86/
 https://blog.tangdaojing.ml/tags/nginx/
 https://blog.tangdaojing.ml/tags/trojan/
 https://blog.tangdaojing.ml/tags/naiveproxy/
+https://blog.tangdaojing.ml/tags/v2ray/
 https://blog.tangdaojing.ml/tags/clash/
 https://blog.tangdaojing.ml/tags/web/
 https://blog.tangdaojing.ml/categories/%E5%85%AB%E5%8D%A6%E5%90%83%E7%93%9C/
