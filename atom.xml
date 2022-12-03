@@ -6,7 +6,7 @@
   <link href="https://blog.tangdaojing.ml/atom.xml" rel="self"/>
   
   <link href="https://blog.tangdaojing.ml/"/>
-  <updated>2022-11-27T02:13:01.543Z</updated>
+  <updated>2022-12-03T07:25:50.502Z</updated>
   <id>https://blog.tangdaojing.ml/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SwitchyOmega</title>
+    <link href="https://blog.tangdaojing.ml/2022/12/03/SwitchyOmega/"/>
+    <id>https://blog.tangdaojing.ml/2022/12/03/SwitchyOmega/</id>
+    <published>2022-12-03T06:30:17.000Z</published>
+    <updated>2022-12-03T07:25:50.502Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>闲着没事又开始折腾了，这次就试试远古科学上网方法：SwitchyOmega!</p><h1 id="折腾"><a href="#折腾" class="headerlink" title="折腾"></a>折腾</h1><h2 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h2><ul><li><p>能装插件的浏览器，且安装<a href="https://chrome.google.com/webstore/detail/proxy-switchyomega/padekgcemlokbadohgkifijomclgjgif?hl=zh-CN">SwitchyOmega</a></p></li><li><p>有一个能在本机创建socks&#x2F;http代理的科学上网客户端</p></li><li><p>闲心</p></li></ul><h2 id="一：连接科学上网客户端"><a href="#一：连接科学上网客户端" class="headerlink" title="一：连接科学上网客户端"></a>一：连接科学上网客户端</h2><p>[因违反相关法规，相关内容不给予显示]</p><h2 id="二：配置SwitchyOmega"><a href="#二：配置SwitchyOmega" class="headerlink" title="二：配置SwitchyOmega"></a>二：配置SwitchyOmega</h2><h3 id="1-创建一个自动切换模式"><a href="#1-创建一个自动切换模式" class="headerlink" title="1.创建一个自动切换模式"></a>1.创建一个自动切换模式</h3><p><img src="https://raw.githubusercontent.com/tdjnodj/picture_bed/main/blog/so_1.png" alt="自动切换模式"></p><h3 id="2-导入规则"><a href="#2-导入规则" class="headerlink" title="2.导入规则"></a>2.导入规则</h3><h4 id="GFWlist模式"><a href="#GFWlist模式" class="headerlink" title="GFWlist模式"></a>GFWlist模式</h4><p>点击“添加规则列表”</p><p><img src="https://raw.githubusercontent.com/tdjnodj/picture_bed/main/blog/so_2.png" alt="添加规则列表"></p><p>格式选择“AutoProxy”<br>网址:<br>  祖传版GFWlist:<code>https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt</code><br>  新版(不兼容，不推荐): <code>https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/gfw.txt</code><br>然后更新</p><p><img src="https://raw.githubusercontent.com/tdjnodj/picture_bed/main/blog/so_3.png" alt="导入GFWlist"></p><h4 id="绕过大陆模式"><a href="#绕过大陆模式" class="headerlink" title="绕过大陆模式"></a>绕过大陆模式</h4><p>添加规则列表时，网址选择<code>https://raw.githubusercontent.com/pexcn/daily/gh-pages/pac/whitelist.pac</code></p><p>设置如下图:<br><img src="https://raw.githubusercontent.com/tdjnodj/picture_bed/main/blog/so_6.png" alt="绕过大陆"><br>对规则列表直连，添加一个条件，类型为”禁用”，并让“禁用”走代理。</p><h3 id="3-配置规则"><a href="#3-配置规则" class="headerlink" title="3.配置规则"></a>3.配置规则</h3><p>修改“规则列表规则”的“情景模式”为你想要的代理，请自行创建。默认情景模式改为直连。注意认证信息在“小锁”处填写</p><p><img src="https://raw.githubusercontent.com/tdjnodj/picture_bed/main/blog/so_4.png" alt="配置规则"></p><h3 id="4-应用更改"><a href="#4-应用更改" class="headerlink" title="4.应用更改"></a>4.应用更改</h3><p><img src="https://raw.githubusercontent.com/tdjnodj/picture_bed/main/blog/so_5.png" alt="应用更改"></p><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>在这个geoip、geosite横行的年代，，不管是这种大陆白名单还是GFWlist都显得过时了，折腾一下而已。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;闲着没事又开始折腾了，这次就试试远古科学上网方法：SwitchyOmega!&lt;/p&gt;
+&lt;h1 id=&quot;折腾&quot;&gt;&lt;a href=&quot;#折腾&quot; c</summary>
+      
+    
+    
+    
+    <category term="折腾" scheme="https://blog.tangdaojing.ml/categories/%E6%8A%98%E8%85%BE/"/>
+    
+    <category term="客户端" scheme="https://blog.tangdaojing.ml/categories/%E6%8A%98%E8%85%BE/%E5%AE%A2%E6%88%B7%E7%AB%AF/"/>
+    
+    
+    <category term="GFW" scheme="https://blog.tangdaojing.ml/tags/GFW/"/>
+    
+    <category term="porxy" scheme="https://blog.tangdaojing.ml/tags/porxy/"/>
+    
+    <category term="SwitchyOmega" scheme="https://blog.tangdaojing.ml/tags/SwitchyOmega/"/>
+    
+    <category term="浏览器插件" scheme="https://blog.tangdaojing.ml/tags/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8F%92%E4%BB%B6/"/>
+    
+  </entry>
   
   <entry>
     <title>v2ray: trojan + ws，支持更多客户端</title>
