@@ -18,32 +18,28 @@
   <meta name="author" content="TDJ no dj">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前言闲着没事又开始折腾了，这次就试试远古科学上网方法：SwitchyOmega! 折腾依赖 能装插件的浏览器，且安装SwitchyOmega  有一个能在本机创建socks&#x2F;http代理的科学上网客户端  闲心   一：连接科学上网客户端[因违反相关法规，相关内容不予显示] 二：配置SwitchyOmega1.创建一个自动切换模式 2.导入规则GFWlist模式点击“添加规则列表”  格">
+    <meta name="description" content="……sing-box的utls过于老旧？ 有图有真相正常chrome:  v2ray v5.1 trojan:  sing-box utls chrome:  我的想法首先，鹦鹉已死。 其次，我认为utls真的不是什么大问题，毕竟有很多软件、很多公司的api都是用go语言实现，还有大量使用过时浏览器内核的app、老司机软件。 所以真正的问题在于tls in tls，而不是百花齐放的tls指纹。 用">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SwitchyOmega">
-<meta property="og:url" content="https://blog.tangdaojing.ml/2022/12/03/SwitchyOmega/index.html">
+<meta property="og:title" content="对utls的一些想法">
+<meta property="og:url" content="https://blog.tangdaojing.ml/2022/12/04/invalid-utls/index.html">
 <meta property="og:site_name" content="TDJNODJ&#39;s blog">
-<meta property="og:description" content="前言闲着没事又开始折腾了，这次就试试远古科学上网方法：SwitchyOmega! 折腾依赖 能装插件的浏览器，且安装SwitchyOmega  有一个能在本机创建socks&#x2F;http代理的科学上网客户端  闲心   一：连接科学上网客户端[因违反相关法规，相关内容不予显示] 二：配置SwitchyOmega1.创建一个自动切换模式 2.导入规则GFWlist模式点击“添加规则列表”  格">
+<meta property="og:description" content="……sing-box的utls过于老旧？ 有图有真相正常chrome:  v2ray v5.1 trojan:  sing-box utls chrome:  我的想法首先，鹦鹉已死。 其次，我认为utls真的不是什么大问题，毕竟有很多软件、很多公司的api都是用go语言实现，还有大量使用过时浏览器内核的app、老司机软件。 所以真正的问题在于tls in tls，而不是百花齐放的tls指纹。 用">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://raw.githubusercontent.com/tdjnodj/picture_bed/main/blog/so_1.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/tdjnodj/picture_bed/main/blog/so_2.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/tdjnodj/picture_bed/main/blog/so_3.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/tdjnodj/picture_bed/main/blog/so_6.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/tdjnodj/picture_bed/main/blog/so_4.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/tdjnodj/picture_bed/main/blog/so_5.png">
-<meta property="article:published_time" content="2022-12-03T06:30:17.000Z">
-<meta property="article:modified_time" content="2022-12-03T07:31:48.054Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/tdjnodj/picture_bed/main/blog/20221204_chrome.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/tdjnodj/picture_bed/main/blog/20221204_nekoray_trojan.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/tdjnodj/picture_bed/main/blog/20221204_utls_chrome.png">
+<meta property="article:published_time" content="2022-12-04T03:17:34.000Z">
+<meta property="article:modified_time" content="2022-12-04T03:26:35.184Z">
 <meta property="article:author" content="TDJ no dj">
 <meta property="article:tag" content="GFW">
-<meta property="article:tag" content="porxy">
-<meta property="article:tag" content="SwitchyOmega">
-<meta property="article:tag" content="浏览器插件">
+<meta property="article:tag" content="tls">
+<meta property="article:tag" content="sing-box">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/tdjnodj/picture_bed/main/blog/so_1.png">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/tdjnodj/picture_bed/main/blog/20221204_chrome.png">
   
   
   
-  <title>SwitchyOmega - TDJNODJ&#39;s blog</title>
+  <title>对utls的一些想法 - TDJNODJ&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -209,7 +205,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="SwitchyOmega"></span>
+            <span id="subtitle" data-typed-text="对utls的一些想法"></span>
           
         </div>
 
@@ -220,8 +216,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-12-03 14:30" pubdate>
-          2022年12月3日 下午
+        <time datetime="2022-12-04 11:17" pubdate>
+          2022年12月4日 上午
         </time>
       </span>
     
@@ -232,7 +228,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          631 字
+          217 字
         
       </span>
     
@@ -243,7 +239,7 @@
         
         
         
-          6 分钟
+          2 分钟
         
       </span>
     
@@ -281,32 +277,22 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">SwitchyOmega</h1>
+            <h1 style="display: none">对utls的一些想法</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>闲着没事又开始折腾了，这次就试试远古科学上网方法：SwitchyOmega!</p>
-<h1 id="折腾"><a href="#折腾" class="headerlink" title="折腾"></a>折腾</h1><h2 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h2><ul>
-<li><p>能装插件的浏览器，且安装<a target="_blank" rel="noopener" href="https://chrome.google.com/webstore/detail/proxy-switchyomega/padekgcemlokbadohgkifijomclgjgif?hl=zh-CN">SwitchyOmega</a></p>
-</li>
-<li><p>有一个能在本机创建socks&#x2F;http代理的科学上网客户端</p>
-</li>
-<li><p>闲心</p>
-</li>
-</ul>
-<h2 id="一：连接科学上网客户端"><a href="#一：连接科学上网客户端" class="headerlink" title="一：连接科学上网客户端"></a>一：连接科学上网客户端</h2><p>[因违反相关法规，相关内容不予显示]</p>
-<h2 id="二：配置SwitchyOmega"><a href="#二：配置SwitchyOmega" class="headerlink" title="二：配置SwitchyOmega"></a>二：配置SwitchyOmega</h2><h3 id="1-创建一个自动切换模式"><a href="#1-创建一个自动切换模式" class="headerlink" title="1.创建一个自动切换模式"></a>1.创建一个自动切换模式</h3><p><img src="https://raw.githubusercontent.com/tdjnodj/picture_bed/main/blog/so_1.png" srcset="/img/loading.gif" lazyload alt="自动切换模式"></p>
-<h3 id="2-导入规则"><a href="#2-导入规则" class="headerlink" title="2.导入规则"></a>2.导入规则</h3><h4 id="GFWlist模式"><a href="#GFWlist模式" class="headerlink" title="GFWlist模式"></a>GFWlist模式</h4><p>点击“添加规则列表”</p>
-<p><img src="https://raw.githubusercontent.com/tdjnodj/picture_bed/main/blog/so_2.png" srcset="/img/loading.gif" lazyload alt="添加规则列表"></p>
-<p>格式选择“AutoProxy”<br>网址:<br>  祖传版GFWlist:<code>https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt</code><br>  新版(不兼容，不推荐): <code>https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/gfw.txt</code><br>然后更新</p>
-<p><img src="https://raw.githubusercontent.com/tdjnodj/picture_bed/main/blog/so_3.png" srcset="/img/loading.gif" lazyload alt="导入GFWlist"></p>
-<h4 id="绕过大陆模式"><a href="#绕过大陆模式" class="headerlink" title="绕过大陆模式"></a>绕过大陆模式</h4><p>添加规则列表时，网址选择<code>https://raw.githubusercontent.com/pexcn/daily/gh-pages/pac/whitelist.pac</code></p>
-<p>设置如下图:<br><img src="https://raw.githubusercontent.com/tdjnodj/picture_bed/main/blog/so_6.png" srcset="/img/loading.gif" lazyload alt="绕过大陆"><br>对规则列表直连，添加一个条件，类型为”禁用”，并让“禁用”走代理。</p>
-<h3 id="3-配置规则"><a href="#3-配置规则" class="headerlink" title="3.配置规则"></a>3.配置规则</h3><p>修改“规则列表规则”的“情景模式”为你想要的代理，请自行创建。默认情景模式改为直连。注意认证信息在“小锁”处填写</p>
-<p><img src="https://raw.githubusercontent.com/tdjnodj/picture_bed/main/blog/so_4.png" srcset="/img/loading.gif" lazyload alt="配置规则"></p>
-<h3 id="4-应用更改"><a href="#4-应用更改" class="headerlink" title="4.应用更改"></a>4.应用更改</h3><p><img src="https://raw.githubusercontent.com/tdjnodj/picture_bed/main/blog/so_5.png" srcset="/img/loading.gif" lazyload alt="应用更改"></p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>在这个geoip、geosite横行的年代，不管是这种大陆白名单还是GFWlist都显得过时了，折腾一下而已。</p>
+                <h1 id="……"><a href="#……" class="headerlink" title="……"></a>……</h1><p>sing-box的utls过于老旧？</p>
+<h1 id="有图有真相"><a href="#有图有真相" class="headerlink" title="有图有真相"></a>有图有真相</h1><p>正常chrome:</p>
+<p><img src="https://raw.githubusercontent.com/tdjnodj/picture_bed/main/blog/20221204_chrome.png" srcset="/img/loading.gif" lazyload alt="chrome 108"></p>
+<p>v2ray v5.1 trojan:</p>
+<p><img src="https://raw.githubusercontent.com/tdjnodj/picture_bed/main/blog/20221204_nekoray_trojan.png" srcset="/img/loading.gif" lazyload alt="v2ray"></p>
+<p>sing-box utls chrome:</p>
+<p><img src="https://raw.githubusercontent.com/tdjnodj/picture_bed/main/blog/20221204_utls_chrome.png" srcset="/img/loading.gif" lazyload alt="utls chrome"></p>
+<h1 id="我的想法"><a href="#我的想法" class="headerlink" title="我的想法"></a>我的想法</h1><p>首先，鹦鹉已死。</p>
+<p>其次，我认为utls真的不是什么大问题，毕竟有很多软件、很多公司的api都是用go语言实现，还有大量使用过时浏览器内核的app、老司机软件。</p>
+<p>所以真正的问题在于tls in tls，而不是百花齐放的tls指纹。</p>
+<p>用这个指纹也没错，因为有的软件用的chromium内核也没及时更新。</p>
 
                 
               </div>
@@ -349,11 +335,9 @@
       
         <a href="/tags/GFW/">#GFW</a>
       
-        <a href="/tags/porxy/">#porxy</a>
+        <a href="/tags/tls/">#tls</a>
       
-        <a href="/tags/SwitchyOmega/">#SwitchyOmega</a>
-      
-        <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8F%92%E4%BB%B6/">#浏览器插件</a>
+        <a href="/tags/sing-box/">#sing-box</a>
       
     </div>
   
@@ -365,8 +349,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>SwitchyOmega</div>
-      <div>https://blog.tangdaojing.ml/2022/12/03/SwitchyOmega/</div>
+      <div>对utls的一些想法</div>
+      <div>https://blog.tangdaojing.ml/2022/12/04/invalid-utls/</div>
     </div>
     <div class="license-meta">
       
@@ -378,7 +362,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年12月3日</div>
+          <div>2022年12月4日</div>
         </div>
       
       
@@ -410,18 +394,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/12/04/invalid-utls/" title="对utls的一些想法">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">对utls的一些想法</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/11/27/trojanws/" title="v2ray: trojan + ws，支持更多客户端">
-                        <span class="hidden-mobile">v2ray: trojan + ws，支持更多客户端</span>
+                      <a href="/2022/12/03/SwitchyOmega/" title="SwitchyOmega">
+                        <span class="hidden-mobile">SwitchyOmega</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
