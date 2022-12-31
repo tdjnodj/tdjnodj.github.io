@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>记一次编译nekoray</title>
+      <link href="/2022/12/31/build-nekoray/"/>
+      <url>/2022/12/31/build-nekoray/</url>
+      
+        <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p><a href="https://github.com/MatsuriDayo/nekoray">nekoray</a>，一款超强科学上网客户端。</p><p>官方的构建是用macOS 10.15，我用10.14，所以每次使用都很麻烦。恰好配置好了qt环境，不如编译一个？</p><h1 id="折腾"><a href="#折腾" class="headerlink" title="折腾"></a>折腾</h1><h2 id="拉取源代码"><a href="#拉取源代码" class="headerlink" title="拉取源代码"></a>拉取源代码</h2><p>注意要带·–recursive·参数才能把依赖一起拉取。</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">git clone https://github.com/MatsuriDayo/nekoray.git --recursive<br></code></pre></td></tr></table></figure><p>此后的命令如无特殊说明都在<code>nekoray</code>目录下进行。我给的命令都是衔接起来的。</p><h2 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h2><p>依赖包含: CMake、Ninja、npm。</p><p>先安装个打包工具<code>appdmg</code></p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo npm install -g appdmg<br></code></pre></td></tr></table></figure><p>再安装C语言的依赖</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">bash ./libs/build_deps_all.sh<br></code></pre></td></tr></table></figure><h2 id="编译本体"><a href="#编译本体" class="headerlink" title="编译本体"></a>编译本体</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">mkdir build<br>cd build<br>cmake -GNinja -DCMAKE_BUILD_TYPE=Release -DNKR_PACKAGE_MACOS=1 ..<br>ninja<br></code></pre></td></tr></table></figure><p>由于我没有<code>zxing</code>，所以我的第三条命令是这样的:</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">cmake -GNinja -DCMAKE_BUILD_TYPE=Release -DNKR_PACKAGE_MACOS=1 -DNKR_NO_ZXING=1 -DNKR_NO_QUICKJS=1 ..<br></code></pre></td></tr></table></figure><h2 id="Go-部分"><a href="#Go-部分" class="headerlink" title="Go 部分"></a>Go 部分</h2><p>在<code>../</code>拉取Matsuri和v2Ray-core代码</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd ../<br>git clone https://github.com/MatsuriDayo/Matsuri.git --recursive<br>git clone https://github.com/MatsuriDayo/v2ray-core.git --recursive<br></code></pre></td></tr></table></figure><p>编译v2Ray-core(nekoray&#x2F;go&#x2F;cmd&#x2F;nekoray_core):</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd nekoray/go/cmd/nekoray_core<br>go build<br></code></pre></td></tr></table></figure><p>编译sing-box(nekoray&#x2F;go&#x2F;cmd&#x2F;nekobox_core):</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd ../<br>cd nekobox_core<br>go build<br></code></pre></td></tr></table></figure><h2 id="打包"><a href="#打包" class="headerlink" title="打包"></a>打包</h2><h3 id="移动core"><a href="#移动core" class="headerlink" title="移动core"></a>移动core</h3><p>将刚刚编译得到的<code>nekoray_core</code> <code>nekobox_core</code> 放入<code>build/nekoray.app/Contents/MacOS</code></p><h3 id="拉取geo资源文件"><a href="#拉取geo资源文件" class="headerlink" title="拉取geo资源文件"></a>拉取geo资源文件</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd ..<br>cd ..<br>cd ..<br>curl -Lso build/nekoray.app/Contents/MacOS/geoip.dat &quot;https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat&quot;<br>curl -Lso build/nekoray.app/Contents/MacOS/geosite.dat &quot;https://github.com/v2fly/domain-list-community/releases/latest/download/dlc.dat&quot;<br>curl -Lso build/nekoray.app/Contents/MacOS/geoip.db &quot;https://github.com/SagerNet/sing-geoip/releases/latest/download/geoip.db&quot;<br>curl -Lso build/nekoray.app/Contents/MacOS/geosite.db &quot;https://github.com/SagerNet/sing-geosite/releases/latest/download/geosite.db&quot;<br></code></pre></td></tr></table></figure><h3 id="正式打包"><a href="#正式打包" class="headerlink" title="正式打包"></a>正式打包</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">appdmg appdmg.json /path/to/nekoray.dmg<br></code></pre></td></tr></table></figure><h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>自此，就编译好了。</p><p>但是自编译的有点奇怪，确认、取消按钮都是英文的。但不影响使用。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 折腾 </category>
+          
+          <category> 客户端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> GFW </tag>
+            
+            <tag> 编译 </tag>
+            
+            <tag> 折腾 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>记一次在低版本macOS配置qt5</title>
       <link href="/2022/12/31/qt/"/>
       <url>/2022/12/31/qt/</url>
@@ -22,9 +53,9 @@
       
         <tags>
             
-            <tag> qt </tag>
-            
             <tag> 编译 </tag>
+            
+            <tag> qt </tag>
             
         </tags>
       
@@ -150,9 +181,9 @@
             
             <tag> GFW </tag>
             
-            <tag> nekoray </tag>
-            
             <tag> 折腾 </tag>
+            
+            <tag> nekoray </tag>
             
         </tags>
       
