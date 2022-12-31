@@ -1,3 +1,4 @@
+https://blog.tangdaojing.ml/2022/12/31/qt/
 https://blog.tangdaojing.ml/2022/12/04/invalid-utls/
 https://blog.tangdaojing.ml/2022/12/03/SwitchyOmega/
 https://blog.tangdaojing.ml/2022/11/27/trojanws/
@@ -27,6 +28,8 @@ https://blog.tangdaojing.ml/tags/sing-box/
 https://blog.tangdaojing.ml/tags/nekoray/
 https://blog.tangdaojing.ml/tags/%E6%8A%98%E8%85%BE/
 https://blog.tangdaojing.ml/tags/%E4%BC%AA%E8%A3%85/
+https://blog.tangdaojing.ml/tags/qt/
+https://blog.tangdaojing.ml/tags/%E7%BC%96%E8%AF%91/
 https://blog.tangdaojing.ml/tags/misaka/
 https://blog.tangdaojing.ml/tags/%E5%9B%9E%E5%BF%86/
 https://blog.tangdaojing.ml/tags/nginx/
@@ -40,4 +43,5 @@ https://blog.tangdaojing.ml/categories/%E5%85%AB%E5%8D%A6%E5%90%83%E7%93%9C/
 https://blog.tangdaojing.ml/categories/%E7%81%B5%E6%84%9F%E8%AE%B0%E5%BD%95/
 https://blog.tangdaojing.ml/categories/%E6%9C%AC%E7%AB%99%E7%9B%B8%E5%85%B3/
 https://blog.tangdaojing.ml/categories/%E6%8A%98%E8%85%BE/%E5%AE%A2%E6%88%B7%E7%AB%AF/
+https://blog.tangdaojing.ml/categories/%E6%8A%98%E8%85%BE/%E7%8E%AF%E5%A2%83/
 https://blog.tangdaojing.ml/categories/%E6%8A%98%E8%85%BE/%E6%90%AD%E5%BB%BA/
